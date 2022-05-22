@@ -1,0 +1,33 @@
+<div class="w3-col w3-margin-bottom">
+
+
+
+  <div *ngFor="let p of appPages let j = index;">
+
+    <div class="w3-col s12 m12 l12" *ngIf="p.label == true">
+      <h5 class="w3-padding">   {{p.title}}  </h5>
+    </div>
+
+
+      <div class="w3-col l4 s12 m6"  style="padding:5px" *ngIf="p.label == false">
+        
+            <div  [routerDirection]="'forward'" [routerLink]="[p.url]" class="w3-card w3-white w3-round" style="height:130px">
+              
+               <div class="w3-col w3-border-right" style="height:130px; width:70px; padding:5px;">
+                  <br />
+                  <img src="{{p.imageurl}}" style="width:60px" />
+                  <br />
+                  <br />
+              </div>
+
+                <div class="w3-rest w3-padding">
+                    <h6> {{p.title}} </h6>
+                    <p class="w3-small w3-text-dark-grey">  {{p.subtitle}} </p>
+                    <br />
+                </div>
+            </div>
+      </div>
+
+    </div>
+
+</div>

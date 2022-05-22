@@ -1,0 +1,38 @@
+{
+  "message":"",
+  "statuscode":100,
+   "post":[
+      {
+      "id":"1",
+      "name":"Super Admin"
+      },
+      {
+         "id":"2",
+         "name":"General Admin"
+      },
+      {
+         "id":"3",
+         "name":"Bursar"
+      },
+      {
+         "id":"4",
+         "name":"Sales"
+       },
+      {
+            "id":"5",
+            "name":"Library"
+     },
+     {
+        "id":"6",
+        "name":"Media"
+     },
+     {
+        "id":"7",
+        "name":"Hostel"
+      },
+     {
+           "id":"0",
+           "name":"Unassigned"
+    }
+   ]
+}

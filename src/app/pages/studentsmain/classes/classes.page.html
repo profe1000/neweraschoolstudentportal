@@ -1,0 +1,121 @@
+<ion-toolbar class="w3-border-bottom w3-card">
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+  <ion-title class="myfont1">  Class </ion-title>
+  <ion-buttons slot="primary">
+    <ion-button (click)="startshowverify()">
+          <ion-icon name="albums-outline"></ion-icon>
+    </ion-button>
+    <ion-button (click)="toogleshowdate()">
+      <ion-icon slot="icon-only" name="calendar-outline"></ion-icon>
+    </ion-button>
+    <ion-button (click)="toogleshowsearch()">
+      <ion-icon slot="icon-only" name="search"></ion-icon>
+    </ion-button>
+</ion-buttons>
+</ion-toolbar>
+<ion-content>
+
+  <div class="w3-light-grey w3-col" style="height:100%">
+
+  <div class="w3-col l12 s12 m12" style="padding:2px">
+
+    <!--Show Search-->
+    <div *ngIf="showsearch" class="w3-col l12 s12 m12 w3-card bglight w3-padding" style="min-height:120px; position:fixed; top:56px;">
+      <div class="w3-right-align"> <a (click)="stopsearch()"> <ion-icon name="close-circle-outline"></ion-icon></a> </div> 
+      <input class="w3-input" [(ngModel)]="mysearchstring" placeholder="Search" /> <br />
+
+       <div class="w3-right-align"> <a (click)="startsearch()" class="w3-btn w3-round w3-primary"> Search </a> </div>
+    </div>
+
+   <!--Show Date-->
+   <div *ngIf="showdate" class="w3-col l12 s12 m12 w3-card bglight w3-padding" style="min-height:120px; position:fixed; top:56px;">
+    <div class="w3-right-align"> <a (click)="stopdate()"> <ion-icon name="close-circle-outline"></ion-icon></a> </div> 
+    <input class="w3-input" [(ngModel)]="mystartdate" type="date"  placeholder="Start Date"  /> <br />
+    <input class="w3-input" [(ngModel)]="myenddate" type="date" placeholder="End Date"  /> <br />
+    <div class="w3-right-align"> <a (click)="startdate()" class="w3-btn w3-round w3-primary"> Filter </a> </div>
+   </div>  
+    
+
+
+      <!-- Manage Class here-->
+       <div *ngIf="displaytype==1" class="w3-col l12 s12 m12 w3-animate-left" style="padding:5px;">
+
+      <div class="w3-right-align w3-hide">
+        <br />
+         <a (click)="changedisplaypage(2)"  class="w3-btn w3-round-xlarge w3-primary w3-small"> Add Class </a>
+      </div>
+  
+                 
+      <div class="w3-card-4 w3-round-large w3-white" style="width:100%;">
+
+           <p class="w3-padding myfont1" style="height:400px">
+             
+            <br /><br />
+            <span> No Record Found </span>
+           </p>
+       </div>
+
+
+        <!-- fab placed to the bottom end -->
+   <div style="position: fixed; bottom:10px; right:10px; display:none">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button  (click)="changedisplaypage(2)">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>     
+
+       </div>
+
+
+        <!-- Add Class here-->
+         <div *ngIf="displaytype==2" class="w3-col l12 s12 m12 w3-animate-right" style="padding:5px">
+
+        <div class="w3-left-align">
+          <br />
+           <a (click)="changedisplaypage(1)" class="w3-btn w3-round-xlarge w3-primary w3-small"> <ion-icon name="arrow-back-outline"></ion-icon> Back to Manage Class </a>
+        </div>
+    
+                   
+        <div class="w3-card-4 w3-round-large w3-white" style="width:100%;">
+  
+             <p class="w3-padding myfont1" style="height:400px">
+               
+              <br /><br />
+              <span> Your Add Class form will be here </span>
+             </p>
+         </div>
+         </div>
+
+
+
+      <!-- Edit Class here-->
+       <div *ngIf="displaytype==3" class="w3-col l12 s12 m12 w3-animate-right" style="padding:5px">
+
+                <div class="w3-left-align">
+                  <br />
+                   <a (click)="changedisplaypage(1)" class="w3-btn w3-round-xlarge w3-primary w3-small"> <ion-icon name="arrow-back-outline"></ion-icon> Back to Manage Class </a>
+                </div>
+            
+                           
+                <div class="w3-card-4 w3-round-large w3-white" style="width:100%;">
+          
+                     <p class="w3-padding myfont1" style="height:400px">
+                       
+                      <br /><br />
+                      <span> Your Edit Class form will be here </span>
+                     </p>
+                 </div>
+      </div>
+      
+
+    </div>
+     
+  </div>
+
+
+
+</ion-content>
+

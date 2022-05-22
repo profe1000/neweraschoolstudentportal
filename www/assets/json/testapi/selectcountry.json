@@ -1,0 +1,14 @@
+{
+  "message":"",
+  "statuscode":100,
+   "post":[
+      {
+      "id":"1",
+      "countryname":"Nigeria"
+   },
+   {
+    "id":"0",
+    "countryname":"Non-Nigeria"
+ }
+]
+}

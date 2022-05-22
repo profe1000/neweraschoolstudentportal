@@ -1,0 +1,29 @@
+<ion-toolbar class="w3-border-bottom w3-card">
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+  <ion-title class="myfont1">  Assignment  </ion-title>
+</ion-toolbar>
+<ion-content>
+
+  <div class="w3-col w3-light-grey" style="min-height:100%">
+
+
+    <div class="w3-col l12 s12 m12" style="padding:5px" *ngIf="this.generalservice.userData">
+
+       <h2 class="w3-bottom-bar w3-border-blue"> Assignment Result for :  {{this.quiztitle}} </h2>
+
+       <app-viewassignentdetails *ngIf="postid > 0"  [postid]="postid" [qstring]="qstring"  [userid]="userid" [qstring]="qstring" [qstringb]="qstringb" [qstringc]="qstringc" [qstringd]="qstringd"  [updatetype]="this.updatetype">
+
+      </app-viewassignentdetails>
+
+    </div>
+
+
+    
+  </div>
+
+
+
+</ion-content>
+

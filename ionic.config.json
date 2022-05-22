@@ -1,0 +1,7 @@
+{
+  "name": "Allin1shop",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

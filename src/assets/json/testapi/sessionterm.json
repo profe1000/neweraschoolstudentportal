@@ -1,0 +1,18 @@
+{
+  "message":"",
+  "statuscode":100,
+   "post":[
+      {
+      "id":"1",
+      "name":"First Term"
+   },
+   {
+    "id":"2",
+    "name":"Second Term"
+ },
+ {
+  "id":"3",
+  "name":"Third Term"
+}
+]
+}

@@ -1,0 +1,120 @@
+
+  <div *ngIf="this.connectionstatuscode==0" id="loader">
+    <span *ngIf="this.label != ''"> <b>  &nbsp; &nbsp;<ion-text style="font-size: 16px;"> {{this.label}} </ion-text></b></span>
+   
+        
+    <div class="w3-center">
+      <br /><br /><br />
+      <ion-spinner color="primary" style="zoom:2"></ion-spinner>
+    </div>
+   
+
+   </div>
+ 
+    
+   <div *ngIf="this.connectionstatuscode==1"  style="margin-bottom: 10px; margin-top: 10px" id="news">
+    <div class="w3-col l6 s6 m6" style="padding:4px">
+       <span>Name </span>
+    </div>
+
+    <div class="w3-col l2 s2 m2" style="padding:4px">
+      <span>Price </span>
+    </div>
+
+    <div class="w3-col l2 s2 m2" style="padding:4px">
+      <span>Quantity </span>
+    </div>
+
+    <div class="w3-col l2 s2 m2" style="padding:4px">
+      <span>  Total </span>
+    </div>
+
+     <div style="padding:3px" *ngFor="let i of this.featurepost; let j = index;" class="w3-col l12 s12">
+        <div class="w3-card-2 w3-round-xlarge bglight myfont1" style="min-height: 160px;  width:100%">
+     
+          <div class="w3-col l2 s2 m2" style="padding:4px">
+            <ion-thumbnail style="width:100%; height:140px">
+               <img src="{{i.imgurl}}" style="width:100%; height:140px" />
+             </ion-thumbnail>
+          </div>
+
+          <div class="w3-col l4 s4 m4" style="padding:4px">
+            <p> <br /> </p>
+            <p class="w3-small">  <b> {{ i.itemname }}  </b>  
+              <br /> <a  (click)="Removeitem(j);" class="w3-btn w3-primary w3-small w3-round-xlarge w3-margin-top"> Remove  </a> 
+            </p>
+          </div>
+
+          <div class="w3-col l2 s2 m2" style="padding:4px">
+            <p> <br /><br /></p>
+            <p class=" w3-padding-left w3-padding-right w3-small">  {{  realmoney(i.costprice)}}  </p>
+          </div>
+
+          <div class="w3-col l2 s2 m2" style="padding:4px">
+            <p> <br /></p>
+            <ion-input (ionChange)="updateitem($event,j);" style="height:50px; width:50px" class="w3-border-round w3-round-xlarge w3-border w3-small" type="number" value="{{i.itemnum}}" min="1" max="9"></ion-input>
+    
+        
+      </div>
+
+          <div class="w3-col l2 s2 m2" style="padding:4px">
+                <p> <br /> <br /></p>
+               <p class=" w3-padding-left w3-padding-right w3-small">    {{ realmoney(i.sellingprice * i.quantity) }} <br /> </p>
+          </div>
+
+        </div>
+    </div>
+
+
+
+  </div>
+
+
+  <div *ngIf="this.connectionstatuscode==2">
+    <div class="w3-col l12 s12 m12 w3-card-0 w3-border w3-center  w3-white w3-margin-top w3-margin-bottom w3-round-xlarge" style="height:350px">
+
+     
+      <img src="assets/images/nodata.png" style="height:120px; max-width: 100%;"  />
+     <h3 class="myfont1"> No Record Found </h3>
+ 
+     <p class="myfont1"> No Record was found, you can Add new Record or change your search parameter.  <br /><br />  </p>
+
+
+     <p class="w3-hide"> <br /><a class="w3-btn w3-round-large w3-primary" style="width:80px"> Home </a> </p>
+ 
+    
+    </div>
+  </div>
+
+
+  <div *ngIf="this.connectionstatuscode==3">
+    <div class="w3-col l12 s12 m12 w3-card-0 w3-border w3-center w3-white w3-margin-top w3-margin-bottom w3-round-xlarge" style="height:350px">
+
+    
+      
+      <img src="assets/images/nonetwork.png" style="height:120px; max-width: 100%;" />
+     <h3 class="myfont1"> No Network Connection </h3>
+ 
+     <p class="myfont1"> Connect to the Internet and try again Later <br /><br /> </p>
+
+     <p> <br /><a (click)="loadpost()" class="w3-btn w3-round-large w3-primary" style="width:80px"> Retry </a> </p>
+ 
+    
+    </div>
+  </div>
+
+  <div class="w3-col l12 s12 m12" *ngIf="this.connectionstatuscode==1">
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" id="myinfinitescroll">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+
+ 
+ 
+ 
+ 
+ 

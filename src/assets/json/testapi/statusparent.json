@@ -1,0 +1,26 @@
+{
+  "message":"",
+  "statuscode":100,
+   "post":[
+      {
+      "id":"1",
+      "name":"All Parent"
+      },
+      {
+         "id":"2",
+         "name":"Active Parent"
+      },
+      {
+         "id":"3",
+         "name":"Pending Parent"
+      },
+      {
+         "id":"4",
+         "name":"Archive Parent"
+       },
+      {
+            "id":"0",
+            "name":"Deleted Parent"
+     }
+   ]
+}

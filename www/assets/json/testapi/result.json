@@ -1,0 +1,65 @@
+{
+  "message":"",
+  "statuscode":100,
+    "postscore":[
+      {
+      "id":"001",
+      "Subject":"English", 
+      "CA1":10,
+      "CA2":10,
+      "CA3":10,
+      "CA4":10
+      },
+      {
+        "id":"001",
+        "Subject":"English", 
+        "CA1":10,
+        "CA2":10,
+        "CA3":10,
+        "CA4":10
+        },
+        {
+          "id":"001",
+          "Subject":"English", 
+          "CA1":10,
+          "CA2":10,
+          "CA3":10,
+          "CA4":10
+          }
+    ],
+    "postbehaviour":[
+      {
+      "id":"001",
+      "name":"Cleaniness", 
+      "Grade":5
+      },
+      {
+        "id":"001",
+        "name":"Cleaniness", 
+        "Grade":5
+      },
+      {
+        "id":"001",
+        "name":"Cleaniness", 
+        "Grade":5
+        }
+    ],
+    "postmeta":[
+      {
+      "id":"001",
+      "classposition":2, 
+      "classtotal":20, 
+      "dpurl":"assets/images/dp.jpg", 
+      "TeacherRemark":"You are a good boy",
+      "PrincipalRemark":"You are a good boy",
+      "StudentName":"Grace Madu",
+      "TeacherName":"Becky Harderson",
+      "Class":"JSS3 A",
+      "Term":"3rd",
+      "Session":"2020/2021",
+      "Attendance":"105",
+      "Attendancetotal":"120",
+      "date" :"08-15-2021"
+      }
+    ]
+ }

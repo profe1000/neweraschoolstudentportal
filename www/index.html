@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8"/>
+  <title> Student My school Portal</title>
+
+  <base href="/"/>
+
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta name="msapplication-tap-highlight" content="no"/>
+
+  <link rel="icon" type="image/png" href="assets/icon/favicon.png"/>
+
+  <link href="assets/mathscribe/jqmath-0.4.3.css" rel="stylesheet"/>
+  <script src="assets/mathscribe/jquery-1.4.3.min.js"></script>
+  <script src="assets/mathscribe/jqmath-etc-0.4.6.min.js"></script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+     tex2jax: { inlineMath: [["$","$"],["\\(","\\)"]] },
+     "HTML-CSS": {
+       linebreaks: { automatic: true, width: "container" }          
+     }              
+  });
+</script>
+
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+  <link rel="stylesheet" href="assets/css/w3.css">
+  <link rel="stylesheet" href="assets/css/animate.css">
+  
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#2196f3">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+<link rel="stylesheet" href="styles.90290f7325facea0a148.css"></head>
+
+<body>
+  <app-root></app-root>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
+<script src="runtime-es2015.c07174a2b079e6b6f4e3.js" type="module"></script><script src="runtime-es5.c07174a2b079e6b6f4e3.js" nomodule defer></script><script src="polyfills-es5.6cba8c114f61dfeae12d.js" nomodule defer></script><script src="polyfills-es2015.49b75b13b16327b0c727.js" type="module"></script><script src="main-es2015.6dabbeae5c94f05f506a.js" type="module"></script><script src="main-es5.6dabbeae5c94f05f506a.js" nomodule defer></script></body>
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+ var onlineregstatus=false;
+  function payWithPaystack(myemail,myname,myphone,amount){
+    var handler = PaystackPop.setup({
+      key: 'pk_live_30cc0bc7ed95c31694ec2a4b6b866a29e74437b2',
+      email: myemail,
+      amount: amount,
+      currency: "NGN",
+      metadata: {
+         custom_fields: [
+            {
+                display_name: myname,
+                variable_name: "mobile_number",
+                value: myphone
+            }
+         ]
+      },
+      callback: function(response){
+          alert('success. transaction ref is ' + response.reference);
+          onlineregstatus=true;
+      },
+      onClose: function(){
+          alert('Payment Cancelled.');
+      }
+    });
+    handler.openIframe();
+  }
+
+function getonlineregstatus(){
+  return  onlineregstatus;
+}
+
+</script>
+
+</html>

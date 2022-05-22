@@ -1,0 +1,16 @@
+{
+    "statuscode":"100",
+    "statusmessage":"Biller retrive successfully",
+    "post":[
+        {
+            "id":"0",
+            "name":"Profeworld Electronics and Mobile",
+            "images":"assets/testjson/caticon/trends.svg"
+        },
+        {
+            "id":"1",
+            "name":"Solex Furniture",
+            "images":"assets/testjson/caticon/electronic.png"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+  "message":"",
+  "statuscode":100,
+   "post":[
+      {
+      "id":"001",
+      "coursename":"Physic",
+      "classname" :"SS1"
+      },
+      {
+        "id":"001",
+        "coursename":"Chemistry",
+        "classname" :"SS1"
+      },
+      {
+        "id":"001",
+        "coursename":"Biology",
+        "classname" :"SS1"
+      } 
+   
+]
+}

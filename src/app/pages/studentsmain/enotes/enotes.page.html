@@ -1,0 +1,60 @@
+<ion-toolbar class="w3-border-bottom w3-card">
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+  <ion-title class="myfont1">  eNnotes </ion-title>
+  <ion-buttons slot="primary" class="w3-hide">
+    <ion-button (click)="toogleshowsearch()">
+      <ion-icon slot="icon-only" name="search"></ion-icon>
+    </ion-button>
+</ion-buttons>
+</ion-toolbar>
+<ion-content>
+
+  <div class="w3-light-grey w3-col" style="min-height:100%">
+
+  <div class="w3-col l12 s12 m12" style="padding:2px">
+
+
+      
+    <!--Show Search-->
+    <div *ngIf="showsearch" style="position:fixed; width:100%; z-index: 10000;" class="w3-col l12 s12 m12 w3-card-4 w3-white w3-padding">
+
+      <div class="w3-right-align"> <a (click)="removesearchpanel()"> <ion-icon name="close-circle"></ion-icon></a> </div> 
+      <input class="w3-input w3-small w3-border w3-round" style="height:50px" [(ngModel)]="mysearchstring" placeholder="Search"  /> <br />
+
+      <div class="w3-col l4 m4 s4 w3-margin-top">
+        <app-selectservercomp headername="Course" pagesize="200" titlename="fullcoursename" valuename="courseid" [selvalue]="this.qstringb" [apiurl]="this.generalservice.apiurl + this.generalservice.viewcourseapi"  (getselectdvalue)="getourselectdvalueqstringb($event)"></app-selectservercomp>
+      </div>
+
+      <div class="w3-col l4 m4 s4 w3-margin-top">
+        <app-selectservercomp headername="Session" titlename="classname" valuename="classid" [selvalue]="this.qstringc" [apiurl]="this.generalservice.apiurl + this.generalservice.viewclassapi"  (getselectdvalue)="getourselectdvalueqstringc($event)"></app-selectservercomp>
+      </div>
+
+      <div class="w3-col l4 m4 s4 w3-margin-top">
+        <app-selectservercomp headername="Term" titlename="name" valuename="id" [selvalue]="this.qstringd" [apiurl]="this.generalservice.apiurl + this.generalservice.viewterm"  (getselectdvalue)="getourselectdvalueqstringd($event)"></app-selectservercomp>
+      </div>
+
+      
+       <div class="w3-right-align"> <a (click)="stopsearch()" class="w3-btn w3-round w3-primary w3-small"> Stop Search </a>  &nbsp; <a (click)="startsearch()" class="w3-btn w3-round w3-primary w3-small"> Search </a> </div>
+    </div>
+  
+
+
+      <!-- Manage student here-->
+      <div  class="w3-col l12 s12 m12 w3-animate-left" style="padding:5px;">
+                 
+         <app-viewnotes #appcont1 [postid]="postid" [userid]="userid" [qstring]="qstring" [qstringb]="qstringb" [qstringc]="qstringc" [qstringd]="qstringd"  [updatetype]="this.updatetype"  (loadeditfunction)="showedit($event)">
+
+         </app-viewnotes>
+         
+       </div>      
+
+    </div>
+     
+  </div>
+
+
+
+</ion-content>
+

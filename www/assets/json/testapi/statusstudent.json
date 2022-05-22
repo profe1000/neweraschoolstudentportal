@@ -1,0 +1,30 @@
+{
+  "message":"",
+  "statuscode":100,
+   "post":[
+      {
+      "id":"1",
+      "name":"All Student"
+      },
+      {
+         "id":"2",
+         "name":"Active Student"
+      },
+      {
+         "id":"3",
+         "name":"Pending Student"
+      },
+      {
+         "id":"4",
+         "name":"Graduated Student"
+      },
+      {
+         "id":"5",
+         "name":"Archive Student"
+       },
+      {
+            "id":"0",
+            "name":"Deleted Student"
+     }
+   ]
+}

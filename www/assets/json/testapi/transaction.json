@@ -1,0 +1,30 @@
+{
+  "message":"",
+  "statuscode":100,
+   "post":[
+      {
+      "id":"001",
+      "Description":"Efe paid school fees",
+      "class":"Fees",
+      "amount":30000,
+      "category":1,
+      "date" :"07-15-2021"
+      },
+      {
+        "id":"001",
+        "Description":"School Bus maintanance",
+        "class":"Expenses",
+        "amount":8000,
+        "category":0,
+        "date" :"07-15-2021"
+      },
+      {
+        "id":"001",
+        "Description":"Sales SS1 Mathematics textbook",
+        "class":"Sales",
+        "amount":2000,
+        "category":1,
+        "date" :"07-15-2021"
+      }
+]
+}

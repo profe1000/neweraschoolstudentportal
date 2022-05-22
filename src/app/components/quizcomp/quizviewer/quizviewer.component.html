@@ -1,0 +1,257 @@
+
+
+
+
+<div  style="min-height: 100%;">
+
+
+  <div *ngIf="this.connectionstatuscode==0" id="loader">
+    <span *ngIf="this.label != ''"> <b>  &nbsp; &nbsp;<ion-text style="font-size: 16px;"> {{this.label}} </ion-text></b></span>
+   
+        
+    <div class="w3-center">
+      <br /><br /><br />
+      <ion-spinner color="primary" style="zoom:2"></ion-spinner>
+    </div>
+   
+  
+   </div>
+  
+   <div *ngIf="this.connectionstatuscode==1"   id="news">
+
+  <div id="quizbody" class="w3-content">
+
+                     <div id="quizheader" class=" w3-container w3-margin-top">
+                           <br />
+                           <span class="w3-col l4 s4 m4 w3-left-align w3-medium myfont1">
+                              Test - {{this.topic}} <span class="w3-center w3-hide-small">  </span>
+                           </span>
+
+                          <span class="w3-col l8 s8 m8 w3-right-align w3-medium">
+                            {{this.mymhs}}
+                            <ion-button >
+                              <ion-icon slot="icon-only" name="calculator"></ion-icon>
+                            </ion-button>
+                            <ion-button (click)= "popgotoquestion()">
+                              <ion-icon slot="icon-only" name="albums-outline"></ion-icon>
+                            </ion-button>
+                          </span>
+
+                     </div>
+
+                     <div id="quizcontent" class=" w3-container" *ngIf="this.quizfilterquestion && !this.performancemode">
+
+                         
+                    <div id="quizquestionset">
+
+                         <h3 class="w3-center myfont1 w3-medium"> Question {{ this.presentindex + 1}} Out of {{ this.quizfilterquestion.length }} </h3>
+                   
+
+                         <br />
+                         <div *ngIf="this.quizfilterquestion[this.presentindex].instruction != ''" class="w3-card w3-border-blue w3-white w3-border w3-round-large w3-padding w3-margin-bottom myfont1" style="margin-top: 10px;max-height:150px; overflow-y: scroll;" [innerHTML]="this.quizfilterquestion[this.presentindex].instruction">    </div>
+
+                         
+
+                         <div class="w3-card w3-border-blue w3-white w3-border w3-round-large w3-padding w3-margin-bottom myfont1"  [innerHTML]="this.quizfilterquestion[this.presentindex].question">
+             
+                         </div>
+                         
+
+                         <div [ngClass]="{'w3-orange':this.myanswer[this.presentindex] == 'A', 'w3-white':this.myanswer[this.presentindex] != 'A', 'w3-disabled':examended == true}" (click)="updatemyanswer('A')" class="w3-card w3-border-blue  w3-border w3-round-large w3-padding w3-margin-bottom myfont1 w3-small">
+                               A. <span [innerHTML]="this.quizfilterquestion[this.presentindex].optiona"></span>
+                         </div>
+
+                         <div [ngClass]="{'w3-orange':this.myanswer[this.presentindex] == 'B', 'w3-white':this.myanswer[this.presentindex] != 'B', 'w3-disabled':examended == true}" (click)="updatemyanswer('B')" class="w3-card w3-border-blue w3-white w3-border w3-round-large w3-padding w3-margin-bottom myfont1 w3-small">
+                              B. <span [innerHTML]="this.quizfilterquestion[this.presentindex].optionb"></span>
+                         </div>
+
+                         <div [ngClass]="{'w3-orange':this.myanswer[this.presentindex] == 'C', 'w3-white':this.myanswer[this.presentindex] != 'C', 'w3-disabled':examended == true}" (click)="updatemyanswer('C')" class="w3-card w3-border-blue w3-white w3-border w3-round-large w3-padding w3-margin-bottom myfont1 w3-small">
+                               C. <span [innerHTML]="this.quizfilterquestion[this.presentindex].optionc"></span>
+                         </div>
+
+                        <div [ngClass]="{'w3-orange':this.myanswer[this.presentindex] == 'D', 'w3-white':this.myanswer[this.presentindex] != 'D', 'w3-disabled':examended == true}" (click)="updatemyanswer('D')" class="w3-card w3-border-blue w3-white w3-border w3-round-large w3-padding w3-margin-bottom myfont1 w3-small">
+                                D. <span [innerHTML]="this.quizfilterquestion[this.presentindex].optiond"></span>
+                         </div>
+
+                        <div [ngClass]="{'w3-orange':this.myanswer[this.presentindex] == 'E', 'w3-white':this.myanswer[this.presentindex] != 'E', 'w3-disabled':examended == true}"  *ngIf="this.quizfilterquestion[this.presentindex].optione != '' || this.quizfilterquestion[this.presentindex].optione == undefined " (click)="updatemyanswer('E')" class="w3-card w3-border-blue w3-white w3-border w3-round-large w3-padding w3-margin-bottom myfont1 w3-small">
+                              E. <span [innerHTML]="this.quizfilterquestion[this.presentindex].optione"></span>
+                        </div>
+                      
+                      </div>
+
+                     <div id="correction">
+                        <div *ngIf="examended" class="w3-container w3-padding-0">
+    
+                          <div *ngIf="this.answermode == 'mode1'" class="w3-col l12 s12 m12 w3-green w3-padding w3-margin-bottom w3-round-large w3-small" style="min-height:50px">
+                               You are correct, You selected Option  {{ this.myanswer[this.presentindex] }} which is the correct option
+                          </div>
+        
+                          <div *ngIf="this.answermode == 'mode2'" class="w3-col l12 s12 m12 w3-red w3-padding w3-margin-bottom w3-round-large w3-small" style="min-height:50px">
+                            You are wrong, You selected Option  {{ this.myanswer[this.presentindex] }} which is the wrong option, the correct option is Option {{this.quizfilterquestion[this.presentindex].correctopt.toUpperCase()}}
+                       </div>
+        
+                       <div *ngIf="this.answermode == 'mode3'" class="w3-col l12 s12 m12 w3-yellow w3-padding w3-margin-bottom w3-round-large w3-small" style="min-height:50px">
+                        You did not attempt this question, the correct option is Option {{this.quizfilterquestion[this.presentindex].correctopt.toUpperCase()}}
+                      </div>
+        
+                          
+        
+                     
+
+                      
+                      <b class="w3-margin-top"> Correction Below </b>
+                       <div style="margin-bottom: 10px;"  class="w3-col l12 s12 m12 w3-light-grey w3-padding w3-margin-bottom myinvert" [innerHTML]="this.quizfilterquestion[this.presentindex].correction">
+        
+                      </div>
+                      <div *ngIf="this.quizfilterquestion[this.presentindex].correctopt == 'A'" style="margin-bottom: 10px;"  class="w3-padding w3-margin-bottom myinvert" [innerHTML]="this.quizfilterquestion[this.presentindex].optiona">
+        
+                      </div>
+                      <div *ngIf="this.quizfilterquestion[this.presentindex].correctopt == 'B'" style="margin-bottom: 10px;"  class="w3-padding w3-margin-bottom myinvert" [innerHTML]="this.quizfilterquestion[this.presentindex].optionb">
+        
+                      </div>
+                      <div *ngIf="this.quizfilterquestion[this.presentindex].correctopt == 'C'" style="margin-bottom: 10px;"  class="w3-padding w3-margin-bottom myinvert" [innerHTML]="this.quizfilterquestion[this.presentindex].optionc">
+        
+                      </div>
+                      <div *ngIf="this.quizfilterquestion[this.presentindex].correctopt == 'D'" style="margin-bottom: 10px;"  class="w3-padding w3-margin-bottom myinvert" [innerHTML]="this.quizfilterquestion[this.presentindex].optiond">
+        
+                      </div>
+                      <div *ngIf="this.quizfilterquestion[this.presentindex].correctopt == 'E'" style="margin-bottom: 10px;"  class="w3-padding w3-margin-bottom myinvert" [innerHTML]="this.quizfilterquestion[this.presentindex].optione">
+        
+                      </div>
+                        </div>
+
+                      </div>
+
+                     </div>
+
+                  
+                    <div class="welcome-card w3-card-2 w3-round-large cardcolor w3-center w3-padding w3-margin-top" *ngIf="this.quizfilterquestion && this.performancemode">
+                <img style="height:200px" class="w3-margin-top"  src=" {{ performancemodevalue[this.performanceindex].image}}" />
+                <h1> {{ performancemodevalue[this.performanceindex].title}}</h1>
+                <span> {{ performancemodevalue[this.performanceindex].status}} </span>
+                <h2 class="w3-xlarge"> {{ this.mypercentscore }}% Score</h2>
+                <h3> Test completed Successfully </h3>
+                <h4>You got {{this.myscore}} Question from a total of  {{this.quizfilterquestion.length}} Ask.</h4>
+                <br />
+                <ion-button (click)= "hideperformancelog()" expand="full" class="w3-round"> Check Correction </ion-button>
+                <br /> <br />
+                    </div>
+
+
+    
+    
+              <div style="margin-bottom: 10px;"  class="w3-padding w3-margin-bottom">
+                <br /> <br /> &nbsp;
+              </div>
+    
+    
+             
+ </div>
+    
+   <div id="quizfooter" *ngIf="!this.performancemode" class="cardcolor" style="position: fixed;  bottom: 00px; height:70px; width:100%; padding-bottom:5px;  background:azure; border-top:1px; border-top-width: medium; border-style:none;">
+    
+      <div class="w3-content">
+
+        <br />
+
+        <div class="w3-col">
+            <div class="w3-col l4 s4 m4" style="padding:5px">
+               <a (click)= "prevquestion()" class="w3-btn w3-primary w3-col w3-round-xlarge"> Prev </a><br />
+            </div>
+            <div class="w3-col l4 s4 m4" style="padding:5px">
+              <a (click)= "nextquestion()" class="w3-btn w3-primary w3-col w3-round-xlarge"> Next </a><br />
+           </div>
+           <div class="w3-col l4 s4 m4" style="padding:5px">
+                 <a *ngIf="!examended" class="w3-btn w3-primary w3-col w3-round-xlarge" (click)= "presentsubmitalert()"> Submit </a>
+                 <a *ngIf="examended" class="w3-btn w3-primary w3-col w3-round-xlarge" (click)= "presentexitalert()"> Exit Quiz </a><br />
+         </div>
+        </div>
+
+        <br /> <br />
+    
+    </div>
+    
+  </div>
+    
+    <div id="popimage" class="w3-modal" style="display:none; z-index:100000000">
+      <div class="w3-modal-content w3-animate-bottom w3-card-4 w3-round-large" style="bottom:(95%); z-index:100000000; max-width:600px">
+        <header class="w3-container"> 
+          <span class="w3-left"><b style="font-size:15px"> <br />  Go to Question </b></span>
+          <ion-button (click)="hidepop()" class="w3-right">
+            <ion-icon  slot="icon-only" name="close"></ion-icon>
+          </ion-button>
+          <h3 class="w3-center"> <br /> </h3>
+        </header>
+        <div class="w3-container w3-center">
+             <div style="max-height: 300px; overflow-y: scroll;">
+              
+              <div class="welcome-card w3-padding-0 w3-card-0">
+                <div *ngIf="examended">
+    
+                  <div *ngFor="let i of  this.quizfilterquestion; let j = index"  class="w3-col l2 s3 m3 w3-round" style="padding:2px;"> 
+                    <div *ngIf="this.presentindex == j" (click)="gotoquestion(j)" class="w3-card-2 w3-small w3-padding w3-orange w3-round"> {{j + 1 }} </div> 
+                    <div *ngIf="this.presentindex != j && this.myanswer[j]=='F'" (click)="gotoquestion(j)" class="w3-card-2 w3-small w3-padding w3-round"> {{j + 1 }} </div> 
+                   <div *ngIf="this.presentindex !=  j && this.myanswer[j]==this.quizfilterquestion[j].correctopt.toUpperCase().trim()" (click)="gotoquestion(j)" class="w3-card-2 w3-small w3-padding w3-green w3-round"> {{j + 1 }} </div> 
+                   <div *ngIf="this.presentindex !=  j && this.myanswer[j]!=this.quizfilterquestion[j].correctopt.toUpperCase().trim() && this.myanswer[j]!='F'" (click)="gotoquestion(j)" class="w3-card-2 w3-small w3-padding w3-red w3-round"> {{j + 1 }} </div> 
+                  </div>
+    
+                </div>
+    
+                <div *ngIf="!examended">
+    
+                  <div *ngFor="let i of  this.quizfilterquestion; let j = index"  class="w3-col l2 s3 m3 w3-round" style="padding:2px;"> 
+                    <div *ngIf="this.presentindex == j" (click)="gotoquestion(j)" class="w3-card-2 w3-small w3-padding w3-orange w3-round"> {{j + 1 }} </div> 
+                    <div *ngIf="this.presentindex != j && this.myanswer[j]=='F'" (click)="gotoquestion(j)" class="w3-card-2 w3-small w3-padding w3-round"> {{j + 1 }} </div> 
+                   <div *ngIf="this.presentindex !=  j && this.myanswer[j]!='F'" (click)="gotoquestion(j)" class="w3-card-2 w3-small w3-padding w3-blue w3-round"> {{j + 1 }} </div> 
+                  </div>
+    
+                </div>
+              </div> 
+             </div>
+            <ion-button (click)="hidepop()" class="w3-right w3-hide-large">
+              Close 
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  
+   </div>
+  
+  
+  <div *ngIf="this.connectionstatuscode==2">
+    <div class="w3-col l12 s12 m12 w3-card-0 w3-border w3-center  w3-margin-top w3-margin-bottom w3-round-xlarge" style="height:350px">
+  
+     <br /><br />
+     <h3 class="myfont1"> No Quiz Question Found </h3>
+  
+     <p class="myfont1"> No Quiz Question was found, The question of the quiz is set to null.  <br /><br />  </p>
+  
+  
+     <p class="w3-hide"> <br /><a class="w3-btn w3-round-large w3-primary" style="width:80px"> Home </a> </p>
+  
+    
+    </div>
+  </div>
+  
+  
+  <div *ngIf="this.connectionstatuscode==3">
+    <div class="w3-col l12 s12 m12 w3-card-0 w3-border w3-center w3-white w3-margin-top w3-margin-bottom w3-round-xlarge" style="height:350px">
+  
+    
+      
+     <br /><br />
+     <h3 class="myfont1"> Quiz not found </h3>
+  
+     <p class="myfont1"> This quiz is not available at the moment. <br /><br /> </p>
+  
+     <p> <br /><a (click)="loadpost()" class="w3-btn w3-round-large w3-primary" style="width:80px"> Retry </a> </p>
+  
+    
+    </div>
+  </div>
+  
+ 
+   </div>
+
+  
+  

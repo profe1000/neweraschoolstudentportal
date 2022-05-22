@@ -1,0 +1,32 @@
+<ion-toolbar class="w3-border-bottom w3-card">
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+  <ion-title class="myfont1">  Blog Post  </ion-title>
+</ion-toolbar>
+<ion-content>
+
+  <div class="w3-light-grey w3-col" style="min-height:100%">
+
+  <div class="w3-col l12 s12 m12" style="padding:2px">
+
+
+
+      <!-- Manage student here-->
+ <div *ngIf="displaytype==1" class="w3-col l12 s12 m12 w3-animate-left" style="padding:5px;">
+    
+     <app-viewposts (loadeditfunction)="showedit($event)">
+
+     </app-viewposts>
+
+ </div>
+
+
+    </div>
+     
+  </div>
+
+
+
+</ion-content>
+

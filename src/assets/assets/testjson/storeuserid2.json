@@ -1,0 +1,11 @@
+{
+    "statuscode":"100",
+    "statusmessage":"Biller retrive successfully",
+    "post":[
+        {
+            "id":"2",
+            "name":"Sango Electrical",
+            "images":"assets/testjson/caticon/vehicle.jpg"
+        }
+    ]
+}

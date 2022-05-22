@@ -1,0 +1,37 @@
+
+<div class="w3-col l12 s12 m12" style="padding:5px">
+
+  <div class="w3-col  w3-white w3-round-xlarge w3-padding">
+
+    
+    <form #form="ngForm" (ngSubmit)="proceed()">
+ 
+      <div class="w3-col l12 m12 s12 w3-margin-top">
+        <div class="w3-col" style="padding:5px">
+           <span class="myinvert w3-small w3-center"> <span class="w3-text-red">*</span> Title</span>
+           <input  #txttitle="ngModel" name="txttitle" [(ngModel)]="title" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border"  placeholder="title" style="height:50px" required  />
+           <label *ngIf="txttitle.invalid  && (txttitle.dirty || txttitle.touched)" Class="w3-text-red w3-small"> * You must enter a valid  title </label>
+          </div>
+      </div>
+
+    <br />
+
+    <div class="w3-col w3-margin-top">
+      <div class="w3-col" style="padding:5px">
+        <button *ngIf="!this.startproceessing" name="next"  class="w3-primary w3-col w3-btn w3-round-large w3-padding w3-small"  style="height:50px" type="submit" [disabled]="form.invalid"> Save  </button>
+        <button *ngIf="this.startproceessing" name="next" class="w3-primary w3-col w3-btn w3-round-large w3-padding w3-small"  style="height:50px" type="submit" [disabled]="true"> <ion-spinner></ion-spinner> Please Wait... </button>
+      </div>
+      
+      <div class="w3-center w3-col">
+        <br />
+      </div>
+      
+      </div>
+
+
+   </form>
+
+    </div>
+
+</div>
+    

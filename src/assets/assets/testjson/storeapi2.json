@@ -1,0 +1,20 @@
+{
+    "statuscode":"100",
+    "statusmessage":"Biller retrive successfully",
+    "post":[
+        {
+            "id":"005",
+            "name":"High Quality Speaker P215A Pro-king",
+            "images":["assets/testjson/images/speaker1.jpg",
+                      "assets/testjson/images/speaker2.jpg",
+                       "assets/testjson/images/speaker3.jpg"],
+            "category":"Phone",
+            "price":"125000",
+            "description":"<p>Lorem Ipsum&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>",
+            "phone Number":"08148115883",
+            "username":"Soligbo Emmanuel",
+            "userid":"001"
+           
+        }
+    ]
+}

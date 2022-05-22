@@ -1,0 +1,38 @@
+<form #form="ngForm" (ngSubmit)="proceed()">
+
+  <div style="margin-top: 20px;" class="bglight w3-col w3-round-xlarge w3-card w3-padding">
+
+   
+    <div class="w3-center">
+        <h2><ion-icon class="w3-circle" name="person"></ion-icon> Change Your Photo </h2> 
+        <span class="myinvert w3-text-dark-grey w3-medium w3-center"> Update your photo here. </span>
+      </div>
+
+
+      <div class="w3-col">
+         <div class="w3-center">
+           <br />
+          <img (click)="pickpicture()" class="w3-circle" src="{{this.img1}}"  style="width:120px; height:120px"/>
+          <input  type="file" id="piclogo" style="display:none" (change)="showpicture($event)" accept="image/*">
+        </div>
+       </div>
+
+    <div class="w3-center w3-col">
+      <br />
+  </div>
+    
+<div class="w3-col w3-margin-top">
+  <div class="w3-col" style="padding:5px">
+    <button *ngIf="!this.startproceessing" name="next"  class="btncolor w3-col w3-btn w3-round-xlarge w3-padding"  style="height:50px" type="submit" [disabled]="form.invalid"> Proceed </button>
+    <button *ngIf="this.startproceessing" name="next" class="btncolor w3-col w3-btn w3-round-xlarge w3-padding"  style="height:50px" type="submit" [disabled]="true"> <ion-spinner></ion-spinner> Please Wait... </button>
+  </div>
+
+<div class="w3-center w3-col">
+    <br />
+</div>
+ 
+</div>
+
+ </div> 
+
+</form>

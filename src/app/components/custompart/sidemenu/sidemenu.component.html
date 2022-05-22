@@ -1,0 +1,51 @@
+<ion-split-pane contentId="main-content">
+  <ion-menu  menu-id="main-content" contentId="main-content" type="overlay">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title class="myfont1"> Student Portal </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+
+      <img style="display:none" src="assets/images/logo.png"/>
+
+      <ion-list class="w3-padding">
+
+
+
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+
+          <label *ngIf="p.label"  class="myfont1">  <br />  {{p.title}}  </label>
+
+
+          <ion-item  lines="none"class="w3-margin-top"  [routerDirection]="'forward'" [routerLink]="[p.url]" *ngIf="p.url != this.pathname  && p.label==false">
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-label class="w3-padding myfont1">
+              <span class="myfont1 w3-small"> {{p.title}} </span>
+            </ion-label>
+          </ion-item>
+
+          <ion-item  lines="none"class="w3-round-xlarge selectedcolor  w3-margin-top"  color="primary" [routerDirection]="'forward'" [routerLink]="[p.url]"  *ngIf="p.url == this.pathname && p.label==false">
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-label class="w3-padding myfont1">
+              <span class="myfont1 w3-small"> {{p.title}} </span>
+            </ion-label>
+          </ion-item>
+
+        </ion-menu-toggle>
+
+
+      
+
+      </ion-list>
+
+    
+
+
+    </ion-content>
+
+  </ion-menu>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-split-pane>
+

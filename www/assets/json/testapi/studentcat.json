@@ -1,0 +1,14 @@
+{
+  "message":"",
+  "statuscode":100,
+   "post":[
+      {
+      "id":"Day",
+      "name":"Day Student"
+   },
+   {
+    "id":"Boarding",
+    "name":"Boarding Student"
+ }
+]
+}

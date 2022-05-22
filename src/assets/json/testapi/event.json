@@ -1,0 +1,25 @@
+{
+  "message":"",
+  "statuscode":100,
+   "post":[
+      {
+      "id":"001",
+      "eventname":"School Resumption", 
+      "eventdesc":"School will resume from August 15th",
+      "date" :"08-15-2021"
+      },
+      {
+        "id":"001",
+        "eventname":"1st Test Begin", 
+        "eventdesc":"Our First test will begin from 13 of September",
+        "date" :"09-13-2021"
+        },
+        {
+          "id":"001",
+          "eventname":"Open Day", 
+          "eventdesc":"School Open day on September 23rd",
+          "date" :"09-28-2021"
+          }
+   
+]
+}

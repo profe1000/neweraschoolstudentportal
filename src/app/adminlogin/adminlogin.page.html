@@ -1,0 +1,61 @@
+
+<ion-content id="my-content">
+  <ion-progress-bar *ngIf='!this.hideprogress' style="margin-top:10px" color="primary" type="indeterminate"></ion-progress-bar>
+  
+    <div class="topbg ion-padding w3-col">
+      
+      <div class='w3-content' style="max-width:600px; margin:auto"> 
+  
+  
+           <div class="w3-col w3-round w3-card-2 w3-white w3-padding w3-margin-bottom animated bounceInRight"  style='min-height:400px; margin-top: 50px;'>
+  
+            <div class="w3-border-bottom"><h2>   <ion-icon class="w3-circle" name="person"></ion-icon> Admin Login </h2> </div>
+  
+                <div class="w3-col l2 s12 m1">
+                       <br /> &nbsp;
+                </div>
+  
+                
+                       <form #form="ngForm" (ngSubmit)="login()">
+                <div class="w3-col l8 s12 m10">
+                  <div class="w3-col w3-margin-top">
+                    <div class="w3-col" style="padding:5px">
+                       <input name="txtemail" [(ngModel)]="email"  class="w3-input w3-round w3-border-blue w3-border" placeholder="Email" style="height:50px" required pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" />
+                      </div>
+                  </div>
+  
+                  <div class="w3-col w3-margin-top">
+                    <div class="w3-col" style="padding:5px">
+                       <input type="password" name="txtpass" [(ngModel)]="pass" class="w3-input w3-round w3-border-blue w3-border" placeholder="Password" style="height:50px" required />
+                      </div>
+                  </div>
+  
+                  <div *ngIf='!this.hideprogress'  class="w3-col w3-margin-top w3-center">
+                    <ion-spinner  color="primary"></ion-spinner> Please Wait
+                 </div>
+  
+                  
+              <div class="w3-col w3-margin-top">
+                <div class="w3-col" style="padding:5px">
+                  <ion-button  type="submit" size="medium" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button> <br /> <br /> <br />
+              </div>
+  
+              </div>
+  
+             
+  
+                </div>
+   </form>
+           <div class="w3-col l2 s12 m1">
+            <br /> &nbsp;
+            </div>
+  
+        
+          </div>
+  
+      </div>
+  
+    </div>
+   
+  </ion-content>
+  

@@ -1,0 +1,46 @@
+<form #form="ngForm" (ngSubmit)="proceed()">
+
+  <div style="margin-top: 20px;" class="bglight w3-col w3-round-xlarge w3-card-4 w3-padding">
+
+   
+    <div class="w3-center">
+        <h2><ion-icon class="w3-circle" name="person"></ion-icon> Set Profile </h2> 
+        <span class="myinvert w3-text-dark-grey w3-medium w3-center"> Please set up your profile here. </span>
+      </div>
+
+    <div class="w3-col w3-margin-top">
+      <div class="w3-col" style="padding:5px">
+         <span class="myinvert w3-text-dark-grey w3-small w3-center">Email Address</span>
+         <input  #txtemail="ngModel" name="txtemail" [(ngModel)]="email" class="w3-input w3-round-xlarge w3-border-dark-grey w3-text-black w3-border" placeholder="Email Address" style="height:50px" required  required pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" />
+         <label *ngIf="txtemail.invalid  && (txtemail.dirty || txtemail.touched)" Class="w3-text-red"> * You must enter a valid email Address </label>
+
+        </div>
+    </div>
+
+    <div class="w3-col w3-margin-top">
+      <div class="w3-col" style="padding:5px">
+        <span class="myinvert w3-text-dark-grey w3-small w3-center"> Password </span>
+         <input #txtpwd="ngModel" name="txtpwd" [(ngModel)]="pwd" class="w3-input w3-round-xlarge w3-border-dark-grey w3-text-black  w3-border" type="password" placeholder="password" style="height:50px" required  maxlength="8" />
+         <label *ngIf="txtpwd.invalid  && (txtpwd.dirty || txtpwd.touched)" Class="w3-text-red"> * You must enter a Password </label>
+        </div>
+    </div>
+
+    <div class="w3-center w3-col">
+      <br />
+  </div>
+    
+<div class="w3-col w3-margin-top">
+  <div class="w3-col" style="padding:5px">
+    <button *ngIf="!this.startproceessing" name="next"  class="btncolor w3-col w3-btn w3-round-xlarge w3-padding"  style="height:50px" type="submit" [disabled]="form.invalid"> Proceed </button>
+    <button *ngIf="this.startproceessing" name="next" class="btncolor w3-col w3-btn w3-round-xlarge w3-padding"  style="height:50px" type="submit" [disabled]="true"> <ion-spinner></ion-spinner> Please Wait... </button>
+  </div>
+
+<div class="w3-center w3-col">
+    <br />
+</div>
+ 
+</div>
+
+ </div> 
+
+</form>

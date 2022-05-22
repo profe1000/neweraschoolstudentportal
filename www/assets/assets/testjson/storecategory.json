@@ -1,0 +1,93 @@
+{
+    "statuscode":"100",
+    "statusmessage":"Biller retrive successfully",
+    "post":[
+        {
+            "id":"0",
+            "name":"Trending Stores",
+            "images":"assets/testjson/caticon/trends.svg"
+        },
+        {
+            "id":"1",
+            "name":"Electronics",
+            "images":"assets/testjson/caticon/electronic.png"
+        } ,
+        {
+            "id":"2",
+            "name":"Vehicle",
+            "images":"assets/testjson/caticon/vehicle.jpg"
+        },
+        {
+            "id":"3",
+            "name":"Property",
+            "images":"assets/testjson/caticon/property.png"
+        },
+        {
+            "id":"4",
+            "name":"Mobile Phone",
+            "images":"assets/testjson/caticon/mobile.png"
+        },
+        {
+            "id":"5",
+            "name":"Furniture",
+            "images":"assets/testjson/caticon/furniture.png"
+        },
+        {
+            "id":"6",
+            "name":"Health And Beauty",
+            "images":"assets/testjson/caticon/healthnbeauty.png"
+        },
+        {
+            "id":"7",
+            "name":"Fashion",
+            "images":"assets/testjson/caticon/fashion.svg"
+        }
+        ,
+        {
+            "id":"8",
+            "name":"Sport",
+            "images":"assets/testjson/caticon/sport.png"
+        },
+        {
+            "id":"9",
+            "name":"CV",
+            "images":"assets/testjson/caticon/cv.png"
+        },
+        {
+            "id":"10",
+            "name":"Service",
+            "images":"assets/testjson/caticon/services.png"
+        },
+        {
+            "id":"11",
+            "name":"Jobs",
+            "images":"assets/testjson/caticon/jobs.png"
+        }
+        ,
+        {
+            "id":"12",
+            "name":"Babies",
+            "images":"assets/testjson/caticon/babies.png"
+        },
+        {
+            "id":"13",
+            "name":"Animals & Pets",
+            "images":"assets/testjson/caticon/pets.png"
+        },
+        {
+            "id":"14",
+            "name":"Agriculture",
+            "images":"assets/testjson/caticon/agriculture.png"
+        },
+        {
+            "id":"15",
+            "name":"Equipment",
+            "images":"assets/testjson/caticon/equipment.png"
+        },
+        {
+            "id":"16",
+            "name":"Repair and Construction",
+            "images":"assets/testjson/caticon/construction.png"
+        }
+    ]
+}

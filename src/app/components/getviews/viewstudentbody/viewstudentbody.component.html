@@ -1,0 +1,218 @@
+
+  <div *ngIf="this.connectionstatuscode==0" id="loader">
+   
+        
+    <div class="w3-center">
+      <br /><br /><br />
+      <ion-spinner style="zoom:2"></ion-spinner>
+    </div>
+   
+
+   </div>
+ 
+ 
+   
+   <div *ngIf="this.connectionstatuscode==1"  style="margin-bottom: 10px; margin-top: 10px" id="news">
+  
+    <div class="w3-col l12 s12 m12" style="padding:5px">
+
+      <div class="w3-col  w3-white w3-round w3-padding">
+    
+        <h2> Student Profile Information</h2>
+       
+        <form #form="ngForm" (ngSubmit)="proceed()">
+ 
+          <div class="w3-col l4 m6 s12 w3-margin-top">
+            <div class="w3-col" style="padding:5px">
+               <span class="myinvert w3-small w3-center"> <span class="w3-text-red">*</span>Surname</span>
+               <input  #txtSurname="ngModel" name="txtSurname" [(ngModel)]="Surname" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border"  placeholder="Surname" style="height:50px" required  />
+               <label *ngIf="txtSurname.invalid  && (txtSurname.dirty || txtSurname.touched)" Class="w3-text-red w3-small"> * You must enter a valid  Surname </label>
+              </div>
+          </div>
+    
+    
+           
+          <div class="w3-col l4 m6 s12 w3-margin-top">
+            <div class="w3-col" style="padding:5px">
+               <span class="myinvert w3-small w3-center"><span class="w3-text-red">*</span>First Name</span>
+               <input  #txtFirstname="ngModel" name="txtFirstname" [(ngModel)]="Firstname" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border"  placeholder="First Name" style="height:50px" required  />
+               <label *ngIf="txtFirstname.invalid  && (txtFirstname.dirty || txtFirstname.touched)" Class="w3-text-red w3-small"> * You must enter a valid  First Name </label>
+              </div>
+          </div>
+    
+    
+           
+          <div class="w3-col l4 m6 s12 w3-margin-top">
+            <div class="w3-col" style="padding:5px">
+               <span class="myinvert w3-small w3-center">Middle Name</span>
+               <input  #txtMiddlename="ngModel" name="txtMiddlename" [(ngModel)]="Middlename" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border"  placeholder="Middle Name" style="height:50px" />
+              </div>
+          </div>
+    
+    
+        
+          <div class="w3-col l4 m6 s12 w3-margin-top">
+            <app-selectservercomp headername="Country" titlename="countryname" valuename="id" [selvalue]="this.Nationality" [apiurl]="this.generalservice.apiurl + this.generalservice.selectcountry"  (getselectdvalue)="getourselectdvaluecountry($event)"></app-selectservercomp>
+          </div>
+    
+    
+    
+          <div class="w3-col l4 m6 s12 w3-margin-top">
+            <app-selectservercomp headername="State" titlename="name" valuename="id" [selvalue]="this.state" [apiurl]="this.generalservice.apiurl + this.generalservice.selectstate"  (getselectdvalue)="getourselectdvaluestate($event)"></app-selectservercomp>
+          </div>
+    
+    
+    
+          <div class="w3-col l4 m6 s12 w3-margin-top w3-hide">
+            <app-selectservercomp headername="Local Government" titlename="name" valuename="id" [selvalue]="this.localovernment"  [apiurl]="this.generalservice.apiurl + this.generalservice.selectstate"  (getselectdvalue)="getourselectdvaluelga($event)"></app-selectservercomp>
+          </div>
+    
+    
+          <div class="w3-col l4 m6 s12 w3-margin-top">
+            <div class="w3-col" style="padding:5px">
+               <span class="myinvert w3-small w3-center">Email</span>
+               <input  #txtEmail="ngModel" name="txtEmail" [(ngModel)]="Email" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border"  placeholder="Email" style="height:50px"   />
+              </div>
+          </div>
+    
+    
+           
+          <div class="w3-col l4 m6 s12 w3-margin-top">
+            <div class="w3-col" style="padding:5px">
+               <span class="myinvert w3-small w3-center">Phone Number</span>
+               <input  #txtPhonenumber="ngModel" name="txtPhonenumber" [(ngModel)]="Phonenumber" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border"  placeholder="Phonenumber" style="height:50px"   />
+              </div>
+          </div>
+    
+    
+          
+          <div class="w3-col l4 m6 s12 w3-margin-top">
+            <div class="w3-col" style="padding:5px">
+               <span class="myinvert w3-small w3-center">Address</span>
+               <input  #txtAddress="ngModel" name="txtAddress" [(ngModel)]="Address" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border"  placeholder="Address" style="height:50px"   />
+              </div>
+          </div>
+    
+    
+          <div class="w3-col l4 m6 s12 w3-margin-top">
+            <app-selectservercomp headername="Gender" titlename="name" valuename="id" [selvalue]="this.Gender" [apiurl]="this.generalservice.apiurl + this.generalservice.selectgender"  (getselectdvalue)="getourselectdvaluegender($event)"></app-selectservercomp>
+          </div>
+    
+          <div class="w3-col l4 m6 s12 w3-margin-top">
+            <app-selectservercomp headername="Religion" titlename="name" valuename="id" [selvalue]="this.Religion" [apiurl]="this.generalservice.apiurl + this.generalservice.selectreligion"  (getselectdvalue)="getourselectdvaluereligion($event)"></app-selectservercomp>
+          </div>
+    
+    
+    
+           
+          <div class="w3-col l4 m6 s12 w3-margin-top">
+            <div class="w3-col" style="padding:5px">
+               <span class="myinvert w3-small w3-center">Date of birth</span>
+               <input  #txtDateofbirth="ngModel" name="txtDateofbirth" [(ngModel)]="Dateofbirth" type="date" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border"  placeholder="Dateofbirth" style="height:50px"   />
+              </div>
+          </div>
+    
+    
+    
+          <div class="w3-col l4 m6 s12 w3-margin-top">
+            <app-selectservercomp headername="Category" titlename="name" valuename="id" [selvalue]="this.Studentcategory" [apiurl]="this.generalservice.apiurl + this.generalservice.selectcat"  (getselectdvalue)="getourselectdvaluecat($event)"></app-selectservercomp>
+          </div>
+    
+    
+          <div class="w3-col l4 m6 s12 w3-margin-top">
+            <app-selectservercomp headername="Blood Group" titlename="name" valuename="id" [selvalue]="this.Bloodgroup" [apiurl]="this.generalservice.apiurl + this.generalservice.selectbloodgroup"  (getselectdvalue)="getourselectdvaluebloodgroup($event)"></app-selectservercomp>
+          </div>
+    
+        
+          
+          <div class="w3-col l4 m6 s12 w3-margin-top">
+            <div class="w3-col" style="padding:5px">
+               <span class="myinvert w3-small w3-center">Date of Entry</span>
+               <input  #txtDateofentry="ngModel" name="txtDateofentry" [(ngModel)]="Dateofentry" type="date" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border"  placeholder="Dateofentry" style="height:50px"  />
+              </div>
+          </div>
+    
+          <div class="w3-col l4 m6 s12 w3-margin-top">
+            <div class="w3-col" style="padding:5px">
+               <app-selectservercomp headername="Present Class" pagesize="100" titlename="classname" valuename="subclassid" [selvalue]="this.presentclass"  [apiurl]="this.generalservice.apiurl + this.generalservice.viewsubclassapi"  (getselectdvalue)="getourselectdvaluepresentclass($event)"></app-selectservercomp>
+          </div>
+        </div>
+    
+    
+              
+          <div class="w3-col l8 m12 s12 w3-margin-top">
+            <div class="w3-col" style="padding:5px">
+               <span class="myinvert w3-small w3-center">Health Information</span>
+               <textarea id="txthealthinfo" [(ngModel)]="healthInfo" style="resize:none; width:100%; height:200px; color:black"></textarea>
+            </div>
+          </div>
+    
+        
+    
+     <div class="w3-col l4 s12 m12 w3-margin-top">
+       <div class="w3-col l12 s12 m12" style="padding:5px">
+        <span class="myinvert w3-small w3-center">Add Student Image</span>
+        <div class="w3-round w3-border w3-light-grey w3-padding" style="width:100%; height:200px">
+              <app-generaluploadimage autoupload=true [img1]="this.imageurl" (getuploadurl)="receiveurl($event,1)"  (removeuploadpicture)="removefile($event,1)"></app-generaluploadimage>
+        </div>
+        </div>
+    </div>
+    
+    
+        <br />
+    
+        <div class="w3-col w3-margin-top">
+          <div class="w3-col" style="padding:5px">
+            <button *ngIf="!this.startproceessing" name="next"  class="w3-primary w3-col w3-btn w3-round-large w3-padding w3-small"  style="height:50px" type="submit" [disabled]="form.invalid"> Save Student </button>
+            <button *ngIf="this.startproceessing" name="next" class="w3-primary w3-col w3-btn w3-round-large w3-padding w3-small"  style="height:50px" type="submit" [disabled]="true"> <ion-spinner></ion-spinner> Please Wait... </button>
+          </div>
+          
+          <div class="w3-center w3-col">
+            <br />
+          </div>
+          
+          </div>
+    
+    
+        </form>
+    
+        </div>
+    
+    </div>
+
+  </div>
+
+  
+  <div *ngIf="this.connectionstatuscode==2">
+    <div class="w3-col l12 s12 m12 w3-card-0 w3-border w3-center  w3-white w3-margin-top w3-margin-bottom w3-round-xlarge" style="height:300px">
+
+      <br />  <br />
+     <h3> No Data Return </h3>
+ 
+     <br />  <br />
+ 
+     <p> Sorry we could not find any student, is either the student has being deleted or does. <br /><br />  </p>
+
+
+     <p class="w3-hide"> <br /><a class="w3-btn w3-round-large w3-primary" style="width:80px"> Home </a> </p>
+ 
+    
+    </div>
+  </div>
+
+
+  <div *ngIf="this.connectionstatuscode==3">
+    <div class="w3-col l12 s12 m12 w3-card-0 w3-border w3-center w3-white w3-margin-top w3-margin-bottom w3-round-xlarge" style="height:300px">
+
+      <br />  <br />
+     <h3> No Network Connection </h3>
+ 
+     <br />  <br />
+ 
+     <p> Connect to the Internet and try again Later <br /><br /> </p>
+
+     <p> <br /><a (click)="loadpost()" class="w3-btn w3-round-large w3-primary" style="width:80px"> Retry </a> </p>
+ 
+    
+    </div>
+  </div>

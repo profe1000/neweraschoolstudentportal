@@ -1,0 +1,85 @@
+<ion-toolbar class="w3-border-bottom w3-card">
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+  <ion-title class="myfont1"> Fees Payment </ion-title>
+  <ion-buttons slot="primary" class="w3-hide">
+    <ion-button (click)="toogleshowsearch()">
+      <ion-icon slot="icon-only" name="search"></ion-icon>
+    </ion-button>
+</ion-buttons>
+</ion-toolbar>
+<ion-content>
+
+  <div class="w3-light-grey w3-col" style="min-height:100%">
+
+  <div class="w3-col l12 s12 m12" style="padding:2px">
+
+
+      <!--Show Search-->
+      <div *ngIf="showsearch" style="position:fixed; width:100%; z-index: 10000;" class="w3-col l12 s12 m12 w3-card-4 w3-white w3-padding">
+
+        <div class="w3-right-align"> <a (click)="removesearchpanel()"> <ion-icon name="close-circle"></ion-icon></a> </div> 
+        <input class="w3-input w3-small w3-border w3-round" style="height:50px" [(ngModel)]="mysearchstring" placeholder="Search"  /> <br />
+  
+        <div class="w3-col l12 m12 s12 w3-margin-top">
+          <app-selectservercomp headername="Class" titlename="classname" valuename="subclassid" [selvalue]="this.qstringc" [apiurl]="this.generalservice.apiurl + this.generalservice.viewsubclassapi"  (getselectdvalue)="getourselectdvalueqstringc($event)"></app-selectservercomp>
+        </div>
+  
+        
+         <div class="w3-right-align"> <a (click)="stopsearch()" class="w3-btn w3-round w3-primary w3-small"> Stop Search </a>  &nbsp; <a (click)="startsearch()" class="w3-btn w3-round w3-primary w3-small"> Search </a> </div>
+      </div>
+
+
+
+
+
+      <!-- Fees Payment list -->
+
+       <div *ngIf="displaytype==2" class="w3-col l12 s12 m12 w3-animate-right" style="padding:5px">
+
+              
+                <app-viewstudentheader *ngIf='this.userid > 0' [postid]="userid">
+
+                </app-viewstudentheader>
+            
+                           
+                 <app-viewstudentfeeslist *ngIf='this.userid > 0' [userid]="userid"  (loadeditfunction)="showaddpayment($event)">
+
+                 </app-viewstudentfeeslist>
+                 
+        </div>
+
+
+
+       <!-- Fees Payment list -->
+
+       <div *ngIf="displaytype==3" class="w3-col l12 s12 m12 w3-animate-right" style="padding:5px">
+
+        <div class="w3-left-align">
+          <br />
+           <a (click)="changedisplaypage(2)" class="w3-btn w3-round-xlarge w3-primary w3-small"> <ion-icon name="arrow-back-outline"></ion-icon> Back to Payment Status </a>
+        </div>
+                   
+         <app-addfeespaymentview [postid]="this.specificfeesid">
+
+         </app-addfeespaymentview>
+
+
+         <div> <h2> Past Fees Payment for this Invoice  </h2> </div>
+
+         <app-viewfeespayment [qstringf]="this.specificfeesid">
+                       
+        </app-viewfeespayment>
+
+       </div>
+      
+
+    </div>
+     
+  </div>
+
+
+
+</ion-content>
+

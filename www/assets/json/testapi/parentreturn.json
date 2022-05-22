@@ -1,0 +1,46 @@
+{
+  "message":"",
+  "statuscode":100,
+   "post":[
+      {
+      "id":"001",
+      "firstname":"Ndunagum",
+      "paranetstatus":1,
+      "lastname":"Bariagar",
+      "middlename":"Happy",
+      "dpurl":"assets/images/dp.jpg", 
+      "email":"teststudent001@noreply.com",  
+      "phonenumber":"081383883833",
+      "gender":"Male",
+      "duefees":5000
+  },
+  {
+    "id":"001",
+    "firstname":"Ndunagum",
+    "studentstatus":1,
+    "lastname":"Bariagar",
+    "middlename":"Happy",
+    "class":"JSS 2",
+    "dpurl":"assets/images/dp.jpg", 
+    "email":"teststudent001@noreply.com",  
+    "phonenumber":"081383883833",
+    "age":19, 
+    "gender":"Male",
+    "duefees":5000
+}, {
+  "id":"001",
+  "firstname":"Ndunagum",
+  "studentstatus":1,
+  "lastname":"Bariagar",
+  "middlename":"Happy",
+  "class":"JSS 2",
+  "dpurl":"assets/images/dp.jpg", 
+  "email":"teststudent001@noreply.com",  
+  "phonenumber":"081383883833",
+  "age":19, 
+  "gender":"Male",
+  "duefees":5000
+}
+   
+]
+}

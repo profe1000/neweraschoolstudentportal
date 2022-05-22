@@ -1,0 +1,403 @@
+<div *ngIf="this.connectionstatuscode==0" id="loader">
+   
+        
+  <div class="w3-center">
+    <br /><br /><br />
+    <ion-spinner style="zoom:2"></ion-spinner>
+  </div>
+ 
+
+ </div>
+ 
+ <div *ngIf="this.connectionstatuscode==1"  style="margin-bottom: 10px; margin-top: 10px" id="news">
+
+  <div class="w3-col l12 s12 m12" style="padding:5px">
+   
+   
+    <div style="width:100%" id="print-section" class="w3-white w3-padding">
+
+      <div style="width: 19cm; border: 0px solid #aaa; margin: 0 auto;">
+
+        <!-- Logo -->
+        <div style="display: flex; align-items: center;">
+          <div class="school-logo" style="display: flex; width: 60px; height: 60px;">
+            <img alt="" src="assets/images/neweralogo.jpg" style="object-fit: contain; object-position: center;   max-width: 70px; max-height: 70px; width: 100%; height: 100%;" /> 
+           </div>
+    
+          <div class="school-name" style="display: inline-block; margin: 20px auto;">
+            <h2 style="text-align: center; margin: 0; font-size: 24px;"> NEW ERA MODEL SCHOOLS</h2>
+            <h5 style="text-align: center; margin: 0; font-size: 15px;"> 97 Jakpa Road Effurun, Delta State</h5>
+          </div>
+    
+        </div>
+    
+        <!-- Result body -->
+        <div class="result-body" style="width: 100%; padding: 0 10px; box-sizing: border-box; border-radius: 5px; border: 2px solid #000;">
+          <div style="text-align: center;">
+            <h6 style="display: inline-block; width: 30%; margin: 0;">{{this.resultdata.post[0].classname}}</h6>
+            <h6 style="display: inline-block; width: 30%; margin: 0;"> Session {{this.resultdata.post[0].session }}  </h6>
+            <h6 style="display: inline-block; width: 30%; margin: 0;">{{ this.resultdata.post[0].term }}</h6>
+          </div>
+    
+          <!-- Details table -->
+          <div class="details" style="display: flex; font-size: 10px;">
+    
+            <div class="details-table" style="width: 50%; overflow: hidden;">
+              <table style="width: 100%;">
+                <tbody style="text-align: left;">
+                  <tr>
+                    <th>STUDENT NAME:</th>
+                    <th> {{this.resultdata.post[0].studentFirstname + ' ' + this.resultdata.post[0].studentSurname + ' ' + this.resultdata.post[0].studentMiddlename }} </th>
+                  </tr>
+                  <tr>
+                    <th>AGE:</th>
+                    <td>{{ this.resultdata.post[0].age  }}</td>
+                  </tr>
+                  <tr>
+                    <th>REGISTRATION NUMBER:</th>
+                    <td>{{this.resultdata.post[0].studentspecialreg}} </td>
+                  </tr>
+                  <tr>
+                    <th>CLASS POPULATION:</th>
+                    <td>{{ this.resultdata.post[0].numberofstudent }} Students</td>
+                  </tr>
+                  <tr>
+                    <th>LOWEST CLASS AVERAGE:</th>
+                    <td>{{ this.resultdata.post[0].lowestclassaveragescore }}%</td>
+                  </tr>
+                  <tr>
+                    <th>HIGHEST CLASS AVERAGE:</th>
+                    <td>{{this.resultdata.post[0].highestclassaveragescore }}%</td>
+                  </tr>
+                  <tr>
+                    <th>POSITION:</th>
+                    <td>
+                      <span *ngIf="this.resultdata.postgrades[0].resulttypeid > 2"> {{ordinal_suffix_of(this.resultdata.post[0].subclassposition)}} </span>
+                      <span *ngIf="this.resultdata.postgrades[0].resulttypeid <= 2">{{getgraderemark(this.averagescore)}}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="details-table" style="width: 50%; overflow: hidden;">
+              <table style="width: 100%;">
+                <tbody style="text-align: left;">
+                  <tr>
+                    <th>GENDER:</th>
+                    <td>{{ this.resultdata.post[0].gender1  }}</td>
+                  </tr>
+                  <tr>
+                    <th>HOUSE:</th>
+                    <td>{{ this.resultdata.post[0].studenthouse}}</td>
+                  </tr>
+                  <tr>
+                    <th>SCHOOL OPENED:</th>
+                    <td> {{ this.resultdata.post[0].schoolopened }} </td>
+                  </tr>
+                  <tr>
+                    <th>ATTENDANCE:</th>
+                    <td> {{ this.resultdata.post[0].attendance  }} </td>
+                  </tr>
+                  <tr>
+                    <th> {{ this.resultdata.post[0].term }} TOTAL SCORE:</th>
+                    <td>  {{ this.overalltotal}} </td>
+                  </tr>
+                  <tr>
+                    <th> {{ this.resultdata.post[0].term }}  AVERAGE:</th>
+                    <td> {{ this.averagescore }}% </td>
+                  </tr>
+                  <tr>
+                    <th>PROMOTIONAL STATEMENT:</th>
+                    <td> {{ this.resultdata.post[0].promotionalstatement  }} </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+    
+    
+          <div style="display: flex; justify-content: space-around; font-size: 10px;">
+            <!-- Scores table -->
+            <div class="border-table scores" style="width: 69%;">
+              <table style="border: 1px solid #333333; width: 100%; text-align: center;">
+                <thead>
+                  <tr>
+                    <th rowspan="3">SUBJECT TITLE</th>
+    
+                    <th colspan="6">{{ this.resultdata.post[0].term }} Result</th>
+                    <th colspan="0" style="display: none;"></th>
+                    <th colspan="0" style="display: none;"></th>
+                    <th colspan="0" style="display: none;"></th>
+                    <th colspan="0" style="display: none;"></th>
+                    <th colspan="0" style="display: none;"></th>
+                  
+                    <th rowspan="3" class="align-center">REMARK</th>
+    
+                  </tr>
+    
+                  <tr>
+                    <th style="display: none;"></th>
+    
+                    <th class="align-vt">
+                      <span>1st Test</span>
+                    </th>
+                    <th class="align-vt">
+                      <span>2nd Test</span>
+                    </th>
+                    <th class="align-vt">
+                      <span>Exam Score</span>
+                    </th>
+                    <th class="align-vt">
+                      <span>Total Score</span>
+                    </th>
+                    <th rowspan="2" class="align-vt">
+                      <span>Grade</span>
+                    </th>
+                    <th rowspan="2" class="align-vt">
+                      <span>Subject Position</span>
+                    </th>
+                    
+                  </tr>
+    
+                  <tr>
+                    <th style="display: none;"></th>
+                    <th>10</th>
+                    <th>20</th>
+                    <th>70</th>
+                    <th>100</th>
+                  </tr>
+    
+                  <tr>
+                    <th colspan="9">COGNITIVE REPORT</th>
+                  </tr>
+                </thead>
+    
+                <tbody id="result-sheet" data-type="single">
+                  
+                  <tr *ngFor="let i of this.resultdata.post; let j = index;">
+                    <td>{{i.coursename}}</td>
+                    <td *ngIf="!i.deletestatus">{{i.ca}}</td>
+                    <td *ngIf="!i.deletestatus">{{i.ca2}}</td>
+                    <td *ngIf="!i.deletestatus">{{i.exam}}</td>
+                    <td *ngIf="!i.deletestatus">{{ i.ca + i.ca2 + i.ca3 + i.exam  }} </td>
+                    <td *ngIf="!i.deletestatus"> {{getgradecomp(i.ca + i.ca2 + i.ca3 + i.exam)}} </td>
+                    <td *ngIf="!i.deletestatus"> {{ordinal_suffix_of(i.courseposition)}}</td>
+                    <td *ngIf="!i.deletestatus">{{ getgraderemark(i.ca + i.ca2 + i.ca3 + i.exam) }}</td>
+                  </tr>
+
+                  <tr>
+                    <th style="text-align: left;"> Total </th>
+                    <th>{{ this.catotal }}</th>
+                    <th>{{ this.ca2total}}</th>
+                    <th>{{ this.examtotal }}</th>
+                    <th>{{  this.overalltotal  }} </th>
+                  </tr>
+
+                </tbody>
+    
+                <tbody>
+                  <tr>
+                    <td colspan="8" style="height: 20px; border-left: 1px solid transparent; border-right: 1px solid transparent"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" style="border-right: none;">NO OF DISTINCTIONS </td>
+                    <td colspan="2" style="border-left: none;">{{this.numberofdistintion }} Subject(s)</td>
+                    
+                    <td colspan="2" style="border-right: none;">FAILED</td>
+                    <td colspan="2" style="border-left: none;">{{  this.numberoffail  }} Subject(s)</td>
+                    
+                  </tr>
+                  
+                  <tr>
+                    <td colspan="2" style="border-right: none;">NO OF PASSES</td>
+                    <td colspan="2" style="border-left: none;"> {{ this.numberofpass  }} Subject(s)</td>
+                    
+                    <td colspan="2" style="border-right: none;">OUT OF</td>
+                    <td colspan="2" style="border-left: none;">{{this.totalcourses }} Subjects</td>
+                    
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+         
+            <div class="border-table" style="width: 29%;">
+    
+              <!-- Social tables -->
+              <table style="border: 1px solid #333333; width: 100%; text-align: center;">
+                <thead>
+                  <tr>
+                    <th colspan="2" style="height: 110px;">SOCIAL BEHAVIOURS AND MANIPULATIVE SKILLS</th>
+                    <th style="display: none;"></th>
+                  </tr>
+                  <tr>
+                    <th>WORK HABITS</th>
+                    <th>RATINGS</th>
+                  </tr>
+                </thead>
+    
+                <tbody id="habit-sheet">
+                  <tr *ngFor="let i of this.resultdata.postbehaviour; let j = index;">
+                    <td> {{  i.resultbehaviourname }} </td>
+                    <td>  {{i.score}} </td>
+                  </tr>
+                </tbody>
+                
+                <tr style="display:none">
+                  <td colspan="2" style="height: 20px; border: none; border-left: 1px solid #fff; border-right: 1px solid #fff;"></td>
+                </tr>
+                <tr style="display:none">
+                  <th>BEHAIVIOUR</th>
+                  <th>RATINGS</th>
+                </tr>
+                <tbody id="behaviour-sheet" style="display:none">
+                  <tr>
+                    <td>Punctuality</td>
+                    <td>Satisfactory</td>
+                  </tr>
+                </tbody>
+              </table>
+    
+              <!-- Fees table -->
+              <table style="border: 1px solid #333333; width: 100%; text-align: center; margin-top: 20px;">
+                <thead>
+                  <tr>
+                    <th colspan="2" style="height: 30px;"> FINANCIAL STATEMENT </th>
+                    <th style="display: none;"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> Outstanding Bill</td>
+                    <td> {{ this.generalservice.realmoney(this.resultdata.post[0].duefees) }} </td>
+                  </tr>
+                  <tr>
+                    <td>Next Term Fees</td>
+                    <td>{{ this.generalservice.realmoney(this.resultdata.post[0].nexttermfees) }}</td>
+                  </tr>
+                  <tr>
+                    <td>PTA Fees</td>
+                    <td>{{ this.generalservice.realmoney(this.resultdata.post[0].ptafees) }}</td>
+                  </tr>
+                  <tr>
+                    <td>Total Fees</td>
+                    <td> {{ this.generalservice.realmoney(this.resultdata.post[0].duefees + this.resultdata.post[0].nexttermfees +  this.resultdata.post[0].ptafees)  }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+    
+          </div>
+    
+          <div class="gradings" style="border: 1px solid #333; margin-top: 10px; padding: 10px;">
+            <h6  style="text-align: center; margin: 0;">KEYS TO GRADING</h6>
+            <p  *ngFor="let i of this.resultdata.postgrades; let j = index;" style="margin: 0; font-size: 10px;">[ {{i.minvalue}}% - {{i.maxvalue}}%  = {{i.grade}} - {{i.graderemark}} ]</p>
+          </div>
+    
+          <!-- Footer table -->
+          <div class="border-table" style="font-size: 10px;">
+            <table style="border: 1px solid #333333; width: 100%; text-align: center; margin: 10px 0;">
+              <tbody>
+                <tr>
+                  <td style="width: 30%;"> CLASS TEACHER'S COMMENT </td>
+                  <td colspan="3"> {{ this.resultdata.post[0].teachercomment  }}</td>
+                </tr>
+    
+                <tr>
+                  <td style="width: 30%; ">CLASS TEACHER'S NAME </td>
+                  <td style="width: 30%;"> {{ this.resultdata.teacher[0].stafffname + ' ' + this.resultdata.teacher[0].stafflname}}</td>
+                  <td style="width: 10%; border-right: none;">Sign: </td>
+                  <td style="width: 30%; border-left: none;"> <img src='{{ this.resultdata.teacher[0].signatureimage }}' style="height:20px" /></td>
+                </tr>
+    
+                <tr>
+                  <td style="width: 30%; "></td>
+                  <td style="width: 30%;"></td>
+                  <td style="width: 10%; border-right: none;"> <br /> &nbsp; </td>
+                  <td style="width: 30%; border-left: none;"></td>
+                </tr>
+    
+                <tr>
+                  <td style="width: 30%;"> HEAD TEACHER'S COMMENT </td>
+                  <td colspan="3"> {{ this.resultdata.post[0].principalcomment }} </td>
+                </tr>
+                
+                <tr>
+                  <td style="width: 30%; ">HEAD TEACHER'S NAME</td>
+                  <td style="width: 30%;"> {{ this.resultdata.principal[0].stafffname + ' ' + this.resultdata.principal[0].stafflname  }}</td>
+                  <td style="width: 10%; border-right: none;">Sign:</td>
+                  <td style="width: 30%; border-left: none;"><img src='{{ this.resultdata.principal[0].signatureimage }}' style="height:20px" /> </td>
+                </tr>
+
+                <tr>
+                  <td style="width: 30%; "></td>
+                  <td style="width: 30%;"></td>
+                  <td style="width: 10%; border-right: none;"> <br /> &nbsp; </td>
+                  <td style="width: 30%; border-left: none;"></td>
+                </tr>
+    
+                <tr>
+                  <td style="width: 30%; ">School Resumes</td>
+                  <td colspan="3" style="text-align: left; padding-left: 10px;">{{  this.generalservice.mydatestring(this.resultdata.post[0].nexttermresume) }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    
+    
+    
+      </div>
+
+
+    </div>
+
+      <div>
+        <br />
+        <a target="_blank" href="resultprint/{{this.postid}}/Result" class="w3-btn w3-primary w3-round-large"> Print Result </a>
+        <button (click)="printresult()" class="w3-btn w3-primary w3-round-large w3-hide">
+          Print
+        </button>
+      </div>
+  </div>
+
+</div>
+
+
+<div *ngIf="this.connectionstatuscode==2">
+  <div class="w3-col l12 s12 m12 w3-card-0 w3-border w3-center  w3-white w3-margin-top w3-margin-bottom w3-round-xlarge" style="height:300px">
+
+    <br />  <br />
+   <h3> No Data Return </h3>
+
+   <br />  <br />
+
+   <p> Sorry we could not find any student, is either the student has being deleted or does. <br /><br />  </p>
+
+
+   <p class="w3-hide"> <br /><a class="w3-btn w3-round-large w3-primary" style="width:80px"> Home </a> </p>
+
+  
+  </div>
+</div>
+
+
+<div *ngIf="this.connectionstatuscode==3">
+  <div class="w3-col l12 s12 m12 w3-card-0 w3-border w3-center w3-white w3-margin-top w3-margin-bottom w3-round-xlarge" style="height:300px">
+
+    <br />  <br />
+   <h3> No Network Connection </h3>
+
+   <br />  <br />
+
+   <p> Connect to the Internet and try again Later <br /><br /> </p>
+
+   <p> <br /><a (click)="loadpost()" class="w3-btn w3-round-large w3-primary" style="width:80px"> Retry </a> </p>
+
+  
+  </div>
+</div>
+
+
+
+

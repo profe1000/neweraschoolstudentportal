@@ -1,0 +1,40 @@
+*{
+    font-size: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .border-table table, .border-table th, .border-table td{
+    border: 1px solid #000;
+    border-collapse: collapse;
+  }
+
+  .align-center{
+    text-align: center;
+  }
+
+  th.align-vt{
+    width: 30px;
+    text-align: center;
+  }
+
+  th.align-vt span{
+    writing-mode: vertical-rl;
+    text-align: right;
+  }
+
+  #result-sheet tr td:first-child{
+    width: 30%;
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  #result-sheet tr td:last-child{
+    width: 10%;
+  }
+
+  @media print{
+    button{
+      display: none !important;
+    }
+  }

@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button  slot="icon-only" (click)= "goback()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="myfont1"  class="myfont1">
+          Manage Result
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="w3-light-grey w3-col" style="min-height:100%">
+  <div style="margin-bottom: 10px; margin-top: 10px">
+   
+
+ <div class="w3-margin-top">
+       <app-resultviewer *ngIf="postid"  [postid]="postid" [updatetype]="this.updatetype">
+
+        </app-resultviewer>
+ </div>
+ 
+
+  </div>
+    </div>
+</ion-content>

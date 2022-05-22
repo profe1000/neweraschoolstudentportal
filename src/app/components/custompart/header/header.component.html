@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+
+      <ion-menu-button *ngIf="buttontype=='menu'"  menu="main-content" autoHide="false"></ion-menu-button>
+      <ion-back-button *ngIf="buttontype=='back'"></ion-back-button>
+
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="showlogout" (click)="logOut()">
+        Log Out
+        <ion-icon slot="end" md="log-out-sharp" ios="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="myfont1"> Dashboard - {{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>

@@ -1,0 +1,11 @@
+{
+    "statuscode":"100",
+    "statusmessage":"Biller retrive successfully",
+    "post":[
+        {
+            "id":"1",
+            "name":"Solex Furniture",
+            "images":"assets/testjson/caticon/electronic.png"
+        } 
+    ]
+}

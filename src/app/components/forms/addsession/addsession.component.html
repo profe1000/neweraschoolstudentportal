@@ -1,0 +1,93 @@
+
+<div class="w3-col l12 s12 m12" style="padding:5px">
+
+  <div class="w3-col  w3-white w3-round-xlarge w3-padding">
+
+    <h2> Session Information </h2>
+    
+    <form #form="ngForm" (ngSubmit)="proceed()">
+ 
+      <div class="w3-col l12 m12 s12 w3-margin-top">
+        <div class="w3-col" style="padding:5px">
+           <span class="myinvert w3-small w3-center"> <span class="w3-text-red">*</span>Session Label</span>
+           <input  #txtsessionlabel="ngModel" name="txtsessionlabel" [(ngModel)]="sessionlabel" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border"  placeholder="sessionlabel" style="height:50px" required  />
+           <label *ngIf="txtsessionlabel.invalid  && (txtsessionlabel.dirty || txtsessionlabel.touched)" Class="w3-text-red w3-small"> * You must enter a valid  Session label </label>
+          </div>
+      </div>
+
+
+      <div class="w3-col l6 m12 s12 w3-margin-top">
+        <div class="w3-col" style="padding:5px">
+           <span class="myinvert w3-small w3-center"> <span class="w3-text-red">*</span>First Term Start</span>
+           <input  #txtfirsttermstart="ngModel" name="txtfirsttermstart" [(ngModel)]="firsttermstart" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border" type="date"  placeholder="firsttermstart" style="height:50px" required  />
+           <label *ngIf="txtfirsttermstart.invalid  && (txtfirsttermstart.dirty || txtfirsttermstart.touched)" Class="w3-text-red w3-small"> * You must enter a valid  firsttermstart </label>
+          </div>
+      </div>
+
+
+      <div class="w3-col l6 m12 s12 w3-margin-top">
+        <div class="w3-col" style="padding:5px">
+           <span class="myinvert w3-small w3-center"> <span class="w3-text-red">*</span>First Term End</span>
+           <input  #txtfirsttermend="ngModel" name="txtfirsttermend" [(ngModel)]="firsttermend" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border" type="date"  placeholder="firsttermend" style="height:50px" required  />
+           <label *ngIf="txtfirsttermend.invalid  && (txtfirsttermend.dirty || txtfirsttermend.touched)" Class="w3-text-red w3-small"> * You must enter a valid  firsttermend </label>
+          </div>
+      </div>
+
+
+      <div class="w3-col l6 m12 s12 w3-margin-top">
+        <div class="w3-col" style="padding:5px">
+           <span class="myinvert w3-small w3-center"> <span class="w3-text-red">*</span>Second Term Start</span>
+           <input  #txtsecondtermstart="ngModel" name="txtsecondtermstart" [(ngModel)]="secondtermstart" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border" type="date"  placeholder="secondtermstart" style="height:50px" required  />
+           <label *ngIf="txtsecondtermstart.invalid  && (txtsecondtermstart.dirty || txtsecondtermstart.touched)" Class="w3-text-red w3-small"> * You must enter a valid  secondtermstart </label>
+          </div>
+      </div>
+    
+   
+
+      <div class="w3-col l6 m12 s12 w3-margin-top">
+        <div class="w3-col" style="padding:5px">
+           <span class="myinvert w3-small w3-center"> <span class="w3-text-red">*</span>Second Term End</span>
+           <input  #txtsecondtermend="ngModel" name="txtsecondtermend" [(ngModel)]="secondtermend" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border" type="date"  placeholder="secondtermend" style="height:50px" required  />
+           <label *ngIf="txtsecondtermend.invalid  && (txtsecondtermend.dirty || txtsecondtermend.touched)" Class="w3-text-red w3-small"> * You must enter a valid  secondtermend </label>
+          </div>
+      </div>
+    
+
+      <div class="w3-col l6 m12 s12 w3-margin-top">
+        <div class="w3-col" style="padding:5px">
+           <span class="myinvert w3-small w3-center"> <span class="w3-text-red">*</span>Third Term Start</span>
+           <input  #txtthirdtermstart="ngModel" name="txtthirdtermstart" [(ngModel)]="thirdtermstart" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border" type="date"  placeholder="thirdtermstart" style="height:50px" required  />
+           <label *ngIf="txtthirdtermstart.invalid  && (txtthirdtermstart.dirty || txtthirdtermstart.touched)" Class="w3-text-red w3-small"> * You must enter a valid  thirdtermstart </label>
+          </div>
+      </div>
+  
+
+      <div class="w3-col l6 m12 s12 w3-margin-top">
+        <div class="w3-col" style="padding:5px">
+           <span class="myinvert w3-small w3-center"> <span class="w3-text-red">*</span>Third Term End</span>
+           <input  #txtthirdtermend="ngModel" name="txtthirdtermend" [(ngModel)]="thirdtermend" class="w3-input w3-round-large w3-small  w3-border-0-dark-grey   bglight w3-border" type="date"  placeholder="thirdtermend" style="height:50px" required  />
+           <label *ngIf="txtthirdtermend.invalid  && (txtthirdtermend.dirty || txtthirdtermend.touched)" Class="w3-text-red w3-small"> * You must enter a valid  thirdtermend </label>
+          </div>
+      </div>
+
+    <br />
+
+    <div class="w3-col w3-margin-top">
+      <div class="w3-col" style="padding:5px">
+        <button *ngIf="!this.startproceessing" name="next"  class="w3-primary w3-col w3-btn w3-round-large w3-padding w3-small"  style="height:50px" type="submit" [disabled]="form.invalid"> Add Session  </button>
+        <button *ngIf="this.startproceessing" name="next" class="w3-primary w3-col w3-btn w3-round-large w3-padding w3-small"  style="height:50px" type="submit" [disabled]="true"> <ion-spinner></ion-spinner> Please Wait... </button>
+      </div>
+      
+      <div class="w3-center w3-col">
+        <br />
+      </div>
+      
+      </div>
+
+
+   </form>
+
+    </div>
+
+</div>
+    

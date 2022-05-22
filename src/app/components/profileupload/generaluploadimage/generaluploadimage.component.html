@@ -1,0 +1,59 @@
+<form #form="ngForm">
+
+  <div style="margin-top: 5px;" class="w3-col w3-padding">
+
+    <div class="w3-right-align">
+      <span *ngIf="this.hasimage" (click)="removepicture()" class="w3-red w3-padding w3-round-xlarge w3-small w3-center"> &nbsp; X  &nbsp; </span>
+    </div>
+
+   
+      <div *ngIf="this.showtitletext" class="w3-center">
+        <span class="myinvert w3-text-dark-grey w3-small w3-center"> {{this.titletext}} </span>
+       </div>
+
+
+      <div class="w3-col">
+         <div class="w3-center">
+           <br />
+          <img (click)="pictureoption()" class="w3-round-xlarge w3-card-2" src="{{this.img1}}"  style="width:120px; height:120px"/>
+          <input  type="file" id="piclogo" style="display:none" (change)="showpicture($event)" accept="image/*">
+
+
+          <input type="file" id="picfromcam" style="display:none" (change)="showpicture($event)" accept="image/*" capture="camera">
+          <input type="file" id="picfromfile" style="display:none" (change)="showpicture($event)" accept="image/*">
+
+
+        </div>
+       </div>
+
+    <div class="w3-center w3-col">
+      <br />
+  </div>
+    
+<div class="w3-col w3-margin-top">
+ 
+  <div class="w3-col" style="padding:5px">
+
+    <div *ngIf="showselectbtn">
+    
+    <button *ngIf="!this.startproceessing" name="next" (click)="pictureoption()"  class="w3-blue w3-col w3-small w3-btn w3-round-xlarge w3-padding w3-margin-bottom"  style="height:40px" type="submit" [disabled]="form.invalid"> {{this.textselect}} </button>
+    
+    <button *ngIf="!this.startproceessing && this.hasimage" (click)="uploadpicture()" name="next"  class="w3-blue w3-col w3-small w3-btn w3-round-xlarge w3-padding  w3-margin-bottom"  style="height:40px" type="submit" [disabled]="form.invalid"> {{this.textupload}}  </button>
+ 
+    <button *ngIf="this.startproceessing" name="next" class="w3-blue w3-col w3-small w3-btn w3-round-xlarge w3-padding  w3-margin-bottom"  style="height:40px" type="submit" [disabled]="true"> <ion-spinner></ion-spinner> Please Wait... </button>
+ 
+   </div>
+  
+    <div *ngIf="startupload">  <ion-spinner></ion-spinner>   {{this.uploadprogressvideo}} % </div>
+
+  </div>
+
+<div class="w3-center w3-col">
+    <br />
+</div>
+ 
+</div>
+
+ </div> 
+
+</form>

@@ -1,0 +1,105 @@
+
+  <div *ngIf="this.connectionstatuscode==0" id="loader">
+    <span *ngIf="this.label != ''"> <b>  &nbsp; &nbsp;<ion-text style="font-size: 16px;"> {{this.label}} </ion-text></b></span>
+   
+        
+    <div class="w3-center">
+      <br /><br /><br />
+      <ion-spinner color="primary" style="zoom:2"></ion-spinner>
+    </div>
+   
+
+   </div>
+ 
+   <div *ngIf="this.connectionstatuscode==1"  style="margin-bottom: 10px; margin-top: 10px" id="news">
+    <span> <ion-text style="font-size: 12px; color:black"> Rows:  <span *ngIf="this.featurepost.length > 0"> {{this.featurepost[0].totalrows}} </span> </ion-text></span>
+
+     <div style="padding:3px" *ngFor="let i of this.featurepost; let j = index;" class="w3-col l12 s12">
+      
+        <div class="w3-border w3-round w3-white w3-col" style="width:100%">
+     
+
+
+         <!-- Supplemery Infomation-->
+
+         <div class="w3-col l3 s4 m4 w3-border-right w3-border-left w3-padding w3-right" style="padding:4px">
+
+          <p class="w3-padding-left w3-padding-right w3-medium">  <span class="w3-small w3-text-dark-grey"> Amount </span>  <br /> <span class="w3-medium w3-text-green">  <b> {{ realmoney((i.amount))  }}  </b></span>
+          </p>
+
+          <p class="w3-padding-left w3-padding-right w3-medium">  <span class="w3-small w3-text-dark-grey"> Approved status </span>  <br /> <span class="w3-medium">  <b> {{  i.approvestatus }}  </b></span>
+          </p>
+
+         
+         </div>
+
+               <!-- Basic Infomation-->
+          <div class="w3-rest" style="padding-left:10px; padding-right:10px;">
+
+            <p class="w3-padding-left w3-padding-right w3-medium">  <span class="w3-small w3-text-dark-grey"> Expenses Name </span>  <br /> <span class="w3-medium w3-text-primary">  <b>{{ i.expensename }} </b></span>
+            </p>
+  
+        
+            <p class="w3-padding-left w3-padding-right w3-medium">  <span class="w3-small w3-text-dark-grey">  {{ i.expensedescription }}  </span>  <br /> 
+            </p>
+
+          
+        
+          </div>
+
+
+        </div>
+    </div>
+
+
+  </div>
+
+
+  <div *ngIf="this.connectionstatuscode==2">
+    <div class="w3-col l12 s12 m12 w3-card-0 w3-border w3-center  w3-white w3-margin-top w3-margin-bottom w3-round-xlarge" style="height:350px">
+
+     
+      <img src="assets/images/nodata.png" style="height:120px; max-width: 100%;"  />
+     <h3 class="myfont1"> No Record Found </h3>
+ 
+     <p class="myfont1"> No student was found, you can Add new student or change your search parameter.  <br /><br />  </p>
+
+
+     <p class="w3-hide"> <br /><a class="w3-btn w3-round-large w3-primary" style="width:80px"> Home </a> </p>
+ 
+    
+    </div>
+  </div>
+
+
+  <div *ngIf="this.connectionstatuscode==3">
+    <div class="w3-col l12 s12 m12 w3-card-0 w3-border w3-center w3-white w3-margin-top w3-margin-bottom w3-round-xlarge" style="height:350px">
+
+    
+      
+      <img src="assets/images/nonetwork.png" style="height:120px; max-width: 100%;" />
+     <h3 class="myfont1"> No Network Connection </h3>
+ 
+     <p class="myfont1"> Connect to the Internet and try again Later <br /><br /> </p>
+
+     <p> <br /><a (click)="loadpost()" class="w3-btn w3-round-large w3-primary" style="width:80px"> Retry </a> </p>
+ 
+    
+    </div>
+  </div>
+
+  <div class="w3-col l12 s12 m12" *ngIf="this.connectionstatuscode==1">
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" id="myinfinitescroll">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+
+ 
+ 
+ 
+ 
+ 

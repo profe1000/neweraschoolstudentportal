@@ -1,0 +1,139 @@
+
+  <div *ngIf="this.connectionstatuscode==0" id="loader">
+    <span *ngIf="this.label != ''"> <b>  &nbsp; &nbsp;<ion-text style="font-size: 16px;"> {{this.label}} </ion-text></b></span>
+   
+        
+    <div class="w3-center">
+      <br /><br /><br />
+      <ion-spinner color="primary" style="zoom:2"></ion-spinner>
+    </div>
+   
+
+   </div>
+ 
+   <div *ngIf="this.connectionstatuscode==1"  style="margin-bottom: 10px; margin-top: 10px" id="news">
+
+    <div class="w3-col w3-margin-bottom">
+      <span *ngIf="this.label != ''"> <b>   <ion-text style="font-size: 16px;"> {{this.label}} </ion-text></b></span>
+      <span> <ion-text style="font-size: 12px; color:black"> {{this.orderfiltername}}: <span *ngIf="this.featurepost.length > 0"> {{this.featurepost[0].totalrows}} </span> </ion-text></span>
+
+       <select (change)="updatepostview()" [(ngModel)]="orderfilter" class="w3-right w3-input w3-round-large w3-small w3-border-0-dark-grey   w3-white w3-border" style="width:150px">
+        <option value="0"> All Student </option>
+        <option value="1"> Active Student</option>
+        <option value="2"> Pending Student  </option>
+        <option value="3"> Graduted Student </option>
+        <option value="4"> Archive Student</option>
+        <option value="5"> Deleted Student </option>
+      </select>
+
+    </div>
+   
+
+
+     <div style="padding:3px" *ngFor="let i of this.featurepost; let j = index;" class="w3-col l12 s12">
+      
+        <div class="w3-border w3-round-xlarge w3-white w3-col" style="width:100%">
+     
+          <!-- Image-->
+          <div class="w3-col w3-center" style="padding:4px; width:120px">
+            <br />
+            <ion-thumbnail style="width:100%;">
+               <img src="{{ i.dpurl }}" class="w3-circle" style="max-width:100%; width:80px; height:80px" />
+             </ion-thumbnail>
+          </div>
+
+              <!-- Option-->
+          <div class="w3-col l3 s3 m3 w3-right w3-center" style="padding:4px">
+            <br /> 
+            <a (click)="loadmyeditfunction(j)" class="w3-text-blue w3-left w3-small"> <u> <ion-icon name="create-sharp"></ion-icon> Edit Information </u> </a>
+            <br />  <br /> 
+            <select (change)="showslectedoption(j,$event)" class="w3-centered w3-input w3-primay w3-round-large w3-small w3-border-0-dark-grey  w3-border" style="width:150px; max-width:100%">
+              <option value="0"> Select Option</option>
+              <option value="1"> Edit Student</option>
+              <option value="2"> View Student  </option>
+              <option value="3"> Delete Student </option>
+              <option value="4"> Archived Student</option>
+              <option value="5"> Approved Student </option>
+            </select>
+
+         </div>
+
+               <!-- Supplemery Infomation-->
+
+         <div class="w3-col l3 w3-border-right w3-border-left w3-padding w3-hide-small w3-hide-medium w3-right" style="padding:4px">
+          <p class="w3-padding-left w3-padding-right w3-medium">  <span class="w3-small w3-text-dark-grey"> Due Fees</span>  <br /> <span class="w3-large">  <b> {{ realmoney((i.duefees))  }}  </b></span>
+          </p>
+
+          <p class="w3-padding-left w3-padding-right w3-small">    <span class="w3-small w3-text-dark-grey"> Student Age: </span> <b> <span [innerHTML]="i.age"> </span> </b></p>
+          <p class="w3-padding-left w3-padding-right w3-small">  <span class="w3-small w3-text-dark-grey"> Gender: </span>   <b><span [innerHTML]="i.gender"> </span> </b> </p>
+         
+         </div>
+
+               <!-- Basic Infomation-->
+          <div class="w3-rest" style="padding-left:10px; padding-right:10px;">
+
+            <p class="w3-padding-left w3-padding-right w3-medium">  <span class="w3-small w3-text-dark-grey"> Student Name</span>  <br /> <span class="w3-large w3-text-primary">  <b>{{ i.firstname + ' ' +  i.lastname + ' ' +  i.middlename }} </b></span>
+            </p>
+  
+            <p class="w3-padding-left w3-padding-right w3-small">    <span class="w3-small w3-text-dark-grey"> Student Class: </span> <b> <span [innerHTML]="i.class"> </span> </b></p>
+            <p class="w3-padding-left w3-padding-right w3-small">  <span class="w3-small w3-text-dark-grey"> Student Status: </span>   <b><span [innerHTML]="studentstatus[i.studentstatus]"> </span> </b> </p>
+           
+
+          </div>
+
+
+        </div>
+    </div>
+
+
+  </div>
+
+
+  <div *ngIf="this.connectionstatuscode==2">
+    <div class="w3-col l12 s12 m12 w3-card-0 w3-border w3-center  w3-white w3-margin-top w3-margin-bottom w3-round-xlarge" style="height:350px">
+
+     
+      <img src="assets/images/nodata.png" style="height:120px; max-width: 100%;"  />
+     <h3 class="myfont1"> No Record Found </h3>
+ 
+     <p class="myfont1"> No Record was found, you can Add new Record or change your search parameter.  <br /><br />  </p>
+
+
+     <p class="w3-hide"> <br /><a class="w3-btn w3-round-large w3-primary" style="width:80px"> Home </a> </p>
+ 
+    
+    </div>
+  </div>
+
+
+  <div *ngIf="this.connectionstatuscode==3">
+    <div class="w3-col l12 s12 m12 w3-card-0 w3-border w3-center w3-white w3-margin-top w3-margin-bottom w3-round-xlarge" style="height:350px">
+
+    
+      
+      <img src="assets/images/nonetwork.png" style="height:120px; max-width: 100%;" />
+     <h3 class="myfont1"> No Network Connection </h3>
+ 
+     <p class="myfont1"> Connect to the Internet and try again Later <br /><br /> </p>
+
+     <p> <br /><a (click)="loadpost()" class="w3-btn w3-round-large w3-primary" style="width:80px"> Retry </a> </p>
+ 
+    
+    </div>
+  </div>
+
+  <div class="w3-col l12 s12 m12" *ngIf="this.connectionstatuscode==1">
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" id="myinfinitescroll">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+
+ 
+ 
+ 
+ 
+ 

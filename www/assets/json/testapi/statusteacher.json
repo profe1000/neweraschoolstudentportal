@@ -1,0 +1,26 @@
+{
+  "message":"",
+  "statuscode":100,
+   "post":[
+      {
+      "id":"1",
+      "name":"All Teacher"
+      },
+      {
+         "id":"2",
+         "name":"Active Teacher"
+      },
+      {
+         "id":"3",
+         "name":"Pending Teacher"
+      },
+      {
+         "id":"4",
+         "name":"Archive Teacher"
+       },
+      {
+            "id":"0",
+            "name":"Deleted Teacher"
+     }
+   ]
+}

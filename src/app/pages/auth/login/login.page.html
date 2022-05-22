@@ -1,0 +1,80 @@
+
+
+<ion-content>
+
+  <div class="w3-col w3-tertiary" style="min-height:100%">
+       
+    
+        <div class="w3-col w3-round w3-padding w3-margin-bottom"  style='min-height:600px'>
+
+     
+      
+              <div class="w3-col l3 s12 m2">
+                     <br /> &nbsp;
+              </div>
+      
+              <div class="w3-col l6 s12 m8">
+              
+           <form #form="ngForm" (ngSubmit)="myproceed()">
+
+              <div style="margin-top: 40px;" class="bglight w3-col w3-round-large w3-card w3-padding">
+
+               
+                <div class="w3-center">
+                    <h2 class="w3-text-light-grey"><ion-icon class="w3-circle myfont1" name="person"></ion-icon>  Student Login  </h2> 
+                    <span class="myinvert w3-text-light-grey w3-medium w3-center myfont1"> Hello, welcome back. Please sign in </span>
+                  </div>
+      
+                <div class="w3-col w3-margin-top">
+                  <div class="w3-col" style="padding:5px">
+                     <span class="myinvert w3-text-light-grey w3-small w3-center myfont1">Student ID</span>
+                     <input  #txtemail="ngModel" name="txtemail" [(ngModel)]="email" class="w3-input w3-round-large w3-border-dark-grey w3-border" placeholder="Student ID" style="height:50px; background:rgba(255,255,255, 0); color:#ffffff" required   />
+                     <label *ngIf="txtemail.invalid  && (txtemail.dirty || txtemail.touched)" Class="w3-text-red"> * You must enter a valid student ID</label>
+   
+                    </div>
+                </div>
+      
+                <div class="w3-col w3-margin-top">
+                  <div class="w3-col" style="padding:5px">
+                    <span class="myinvert w3-text-light-grey w3-small w3-center myfont1"> Password </span>
+                     <input #txtpwd="ngModel" name="txtpwd" [(ngModel)]="pwd" class="w3-input w3-round-large w3-border-dark-grey  w3-border" type="password" placeholder="password" style="height:50px; background:rgba(255,255,255, 0); color:#ffffff" required/>
+                     <label *ngIf="txtpwd.invalid  && (txtpwd.dirty || txtpwd.touched)" Class="w3-text-red"> * You must enter a Password </label>
+                      <span style="text-align: right;" class="w3-medium w3-center w3-right myfont1"> <b class="btntextcolor" (click)="openresetpassword()"> Forgot Password? </b> </span>
+                    </div>
+                </div>
+      
+                
+            <div class="w3-col w3-margin-top">
+              <div class="w3-col" style="padding:5px">
+                <button *ngIf="!this.startproceessing" name="next"  class="btncolor w3-col w3-btn w3-round-large w3-padding myfont1"  style="height:50px" type="submit" [disabled]="form.invalid"> Login </button>
+                <button *ngIf="this.startproceessing" name="next" class="btncolor w3-col w3-btn w3-round-large w3-padding myfont1"  style="height:50px" type="submit" [disabled]="true"> <ion-spinner></ion-spinner> Please Wait... </button>
+               
+              </div>
+
+
+              <div class="w3-col" style="padding:5px">
+                <br />
+              </div>
+   
+             
+            </div>
+         
+             </div> 
+
+            </form>
+
+
+           </div>
+      
+         <div class="w3-col l3 s12 m2">
+          <br /> &nbsp;
+          </div>
+      
+      
+
+      
+        </div>
+
+  </div>
+      
+</ion-content>
