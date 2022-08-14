@@ -1,0 +1,29 @@
+<ion-toolbar class="w3-border-bottom w3-card">
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+  <ion-title class="myfont1">  Video : {{this.title}} </ion-title>
+</ion-toolbar>
+<ion-content>
+
+  <div class="w3-col w3-light-grey" style="min-height:100%">
+
+
+    <div class="w3-col l12 s12 m12" style="padding:5px">
+
+
+       <app-viewvideossingle *ngIf="postid > 0"  [postid]="postid" [userid]="userid" [qstring]="qstring" [qstringb]="qstringb" [qstringc]="qstringc" [qstringd]="qstringd"  [updatetype]="this.updatetype">
+
+       </app-viewvideossingle>
+
+
+    </div>
+
+
+    
+  </div>
+
+
+
+</ion-content>
+

@@ -413,9 +413,9 @@ showslectedoption(pageindex,$event){
 if($event.target.value==1){
     this.loadmyeditfunction(pageindex);
 } else if($event.target.value==2){
-   alert("View student function not ready")
+  this.router.navigate(["/managevideoplayer/" + this.featurepost[pageindex].videoid +'/' + this.featurepost[pageindex].title])
 } else if($event.target.value==3){
-  alert("Delete student function not ready")
+  this.alertdeletepost(pageindex)
 } else if($event.target.value==4){
   alert("Archived student function not ready")
 } else if($event.target.value==5){
@@ -436,7 +436,7 @@ async alertdeletepost(index) {
   const alert = await this.alertController.create({
     header: 'Alert',
     subHeader: '',
-    message: 'Are You sure you want to Cancel this order',
+    message: 'Are You sure you want to Delete this Video',
     buttons: [{
       text: 'Cancel',
       role: 'cancel',
@@ -454,28 +454,19 @@ async alertdeletepost(index) {
 }
 
 async deletefile(index){
-  this.featurepost[index].orderstatus=  4;
-
   // the post obj
   var obj = {
-    "storeorderid":this.featurepost[index].storeorderid,
-    "orderstatuscode":4,
-    "itemnum":4,
-    "apikey":"",
+    "adminid":this.generalservice.userid,
+    "apikey":this.generalservice.apikey,
+     "videoid" : this.featurepost[index].videoid
           };
 
-  
-   //alert(this.amount)
-
- 
-
-  
-  //Convert the obj to json string
+ //Convert the obj to json string
  var jsonData = JSON.stringify(obj);
  //this.startloading();
 
   await this.httpClient
-     .post(this.generalservice.apiurl +'api/admin/update/updateorderstatus.ashx',jsonData)
+     .post(this.generalservice.apiurl + this.generalservice.deletevideo + "",jsonData)
      .subscribe(async res => {
         //Connection successful, once you read the data in res you use the status code to perform logic
        console.log(res);
@@ -483,12 +474,12 @@ async deletefile(index){
 
         
     if (res["statuscode"]!= 99){
-       this.presentToast("Unable to Update Order");
+       this.presentToast("Delete Error");
      }
   
    if (res["statuscode"]== 99){
      //this.storage.set('logindetails', res);
-      this.presentToast("Order Updated");
+      this.presentToast("Delete Successful");
     }
 
     //this.stoploading();
@@ -500,246 +491,12 @@ async deletefile(index){
        this.presentToast("Unable to connect to the Internet")
      });
 
-   
-}
-
-
-//Confirm Order
-openconfirm(pageindex){
-
-  this.alertconfirmorder(pageindex)
-
-}
-
-
-async alertconfirmorder(index) {
-  const alert = await this.alertController.create({
-    header: 'Alert',
-    subHeader: '',
-    message: 'Are You sure you want to Confirm this order',
-    buttons: [{
-      text: 'Cancel',
-      role: 'cancel',
-      cssClass: 'secondary',
-      handler: () => {
-      }
-    }, {
-      text: 'Okay',
-      handler: () => {
-        this.confirmfile(index);
-      }
-    }]
-  });
-  await alert.present();
-}
-
-async confirmfile(index){
-  this.featurepost[index].orderstatus=  1;
-
-  // the post obj
-  var obj = {
-    "storeorderid":this.featurepost[index].storeorderid,
-    "orderstatuscode":1,
-    "itemnum":1,
-    "apikey":"",
-          };
-
-  
-   //alert(this.amount)
-
- 
-
-  
-  //Convert the obj to json string
- var jsonData = JSON.stringify(obj);
- //this.startloading();
-
-  await this.httpClient
-     .post(this.generalservice.apiurl +'api/admin/update/updateorderstatus.ashx',jsonData)
-     .subscribe(async res => {
-        //Connection successful, once you read the data in res you use the status code to perform logic
-       console.log(res);
-      
-
-        
-    if (res["statuscode"]!= 99){
-       this.presentToast("Unable to Update Order");
-     }
-  
-   if (res["statuscode"]== 99){
-     //this.storage.set('logindetails', res);
-      this.presentToast("Order Updated");
-    }
-
-    //this.stoploading();
      
-     }, (err) => {
-      //unable to connect to http request (likely error, you made mistake in the request or no active internet connection)
-      console.log(err);
-       //this.stoploading();
-       this.presentToast("Unable to connect to the Internet")
-     });
-
+   
+   this.featurepost.splice(index,1);
    
 }
 
-
-// Transist Function here
-opentransist(pageindex){
-
-  this.alerttransistpost(pageindex)
-
-}
-
-async alerttransistpost(index) {
-  const alert = await this.alertController.create({
-    header: 'Alert',
-    subHeader: '',
-    message: 'Are You sure you want to move the order to transist',
-    buttons: [{
-      text: 'Cancel',
-      role: 'cancel',
-      cssClass: 'secondary',
-      handler: () => {
-      }
-    }, {
-      text: 'Okay',
-      handler: () => {
-        this.transistitem(index);
-      }
-    }]
-  });
-  await alert.present();
-}
-
-async transistitem(index){
-  this.featurepost[index].orderstatus=  2;
-
-  // the post obj
-  var obj = {
-    "storeorderid":this.featurepost[index].storeorderid,
-    "orderstatuscode":2,
-    "itemnum":1,
-    "apikey":"",
-          };
-
-  
-   //alert(this.amount)
-
- 
-
-  
-  //Convert the obj to json string
- var jsonData = JSON.stringify(obj);
- //this.startloading();
-
-  await this.httpClient
-     .post(this.generalservice.apiurl +'api/admin/update/updateorderstatus.ashx',jsonData)
-     .subscribe(async res => {
-        //Connection successful, once you read the data in res you use the status code to perform logic
-       console.log(res);
-      
-
-        
-    if (res["statuscode"]!= 99){
-       this.presentToast("Unable to Update Order");
-     }
-  
-   if (res["statuscode"]== 99){
-     //this.storage.set('logindetails', res);
-      this.presentToast("Order Updated");
-    }
-
-    //this.stoploading();
-     
-     }, (err) => {
-      //unable to connect to http request (likely error, you made mistake in the request or no active internet connection)
-      console.log(err);
-       //this.stoploading();
-       this.presentToast("Unable to connect to the Internet")
-     });
-
-   
-}
-
-
-// Complete Function here
-opencompleteorder(pageindex){
-
-  this.aletcompletepost(pageindex)
-
-}
-
-async aletcompletepost(index) {
-  const alert = await this.alertController.create({
-    header: 'Alert',
-    subHeader: '',
-    message: 'Are You sure this order has been Delivered',
-    buttons: [{
-      text: 'Cancel',
-      role: 'cancel',
-      cssClass: 'secondary',
-      handler: () => {
-      }
-    }, {
-      text: 'Okay',
-      handler: () => {
-        this.completeitem(index);
-      }
-    }]
-  });
-  await alert.present();
-}
-
-async completeitem(index){
-  this.featurepost[index].orderstatus=  3;
-
-  // the post obj
-  var obj = {
-    "storeorderid":this.featurepost[index].storeorderid,
-    "orderstatuscode":3,
-    "itemnum":1,
-    "apikey":"",
-          };
-
-  
-   //alert(this.amount)
-
- 
-
-  
-  //Convert the obj to json string
- var jsonData = JSON.stringify(obj);
- //this.startloading();
-
-  await this.httpClient
-     .post(this.generalservice.apiurl +'api/admin/update/updateorderstatus.ashx',jsonData)
-     .subscribe(async res => {
-        //Connection successful, once you read the data in res you use the status code to perform logic
-       console.log(res);
-      
-
-        
-    if (res["statuscode"]!= 99){
-       this.presentToast("Unable to Update Order");
-     }
-  
-   if (res["statuscode"]== 99){
-     //this.storage.set('logindetails', res);
-      this.presentToast("Order Updated");
-    }
-
-    //this.stoploading();
-     
-     }, (err) => {
-      //unable to connect to http request (likely error, you made mistake in the request or no active internet connection)
-      console.log(err);
-       //this.stoploading();
-       this.presentToast("Unable to connect to the Internet")
-     });
-
-   
-}
 
 async startloading(msg) {
   this.loading = await this.loadingController.create({
@@ -755,16 +512,8 @@ async stoploading() {
 //Emit Postid
 
 loadmyeditfunction(pageindex){
-  this.loadeditfunction.emit(this.featurepost[pageindex].id);
+  this.loadeditfunction.emit(this.featurepost[pageindex].videoid);
   //alert(this.featurepost[pageindex].storeorderid)
-}
-
-loadmyorderdispatch(pageindex){
-  this.loadorderdespatch.emit(this.featurepost[pageindex].storeorderid);
-}
-
-loadmyordermessage(pageindex){
-  this.loadordermessage.emit(this.featurepost[pageindex].storeorderid);
 }
 
 }

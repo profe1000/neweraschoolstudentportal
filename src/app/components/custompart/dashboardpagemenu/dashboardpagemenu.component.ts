@@ -60,6 +60,14 @@ export class DashboardpagemenuComponent implements OnInit {
        label:false
       },
       {
+        title: ' Videos',
+        url: '/videos',
+        icon: 'videocam-outline',
+        imageurl: 'assets/images/svg/videos.svg',
+      subtitle: 'View Now',
+       label:false
+      },
+      {
         title: 'Report Card',
         url: '/results',
         icon: 'bar-chart-outline',
@@ -104,14 +112,6 @@ export class DashboardpagemenuComponent implements OnInit {
         url: '/schoolblog',
         icon: 'albums-outline',
         imageurl: 'assets/images/svg/blog.svg',
-      subtitle: 'View Now',
-       label:false
-      },
-      {
-        title: ' Videos',
-        url: '/videos',
-        icon: 'videocam-outline',
-        imageurl: 'assets/images/svg/videos.svg',
       subtitle: 'View Now',
        label:false
       },

@@ -44,7 +44,7 @@
       <!-- Manage student here-->
       <div  class="w3-col l12 s12 m12 w3-animate-left" style="padding:5px;">
                  
-         <app-viewquiz  #appcont1 [postid]="postid" [userid]="userid" [qstring]="qstring" [qstringb]="qstringb" [qstringc]="qstringc" [qstringd]="qstringd"  [updatetype]="this.updatetype"  (loadeditfunction)="showedit($event)">
+         <app-viewquiz   *ngIf="this.qstringc !=''" #appcont1 [postid]="postid" [userid]="userid" [qstring]="qstring" [qstringb]="qstringb" [qstringc]="qstringc" [qstringd]="qstringd"  [updatetype]="this.updatetype"  (loadeditfunction)="showedit($event)">
 
          </app-viewquiz>
          

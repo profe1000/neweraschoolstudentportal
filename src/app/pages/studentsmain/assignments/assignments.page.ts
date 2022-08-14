@@ -50,6 +50,9 @@ export class AssignmentsPage implements OnInit {
  }
 
  async myinit(){
+  await this.generalservice.myinit();
+  this.qstringc=this.generalservice.subclassid;
+  this.qstringd ="1";
   //await this.getprofile();
  }
 

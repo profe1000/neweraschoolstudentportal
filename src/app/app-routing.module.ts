@@ -80,7 +80,7 @@ const routes: Routes = [
   },
   {
     path: 'videos',
-    loadChildren: () => import('./pages/blog/videos/videos.module').then( m => m.VideosPageModule)
+    loadChildren: () => import('./pages/studentsmain/videos/videos.module').then( m => m.VideosPageModule)
   },
   {
     path: 'manageprofile',
@@ -117,6 +117,10 @@ const routes: Routes = [
   {
     path: 'resultprint/:id/:username',
     loadChildren: () => import('./pages/studentsmain/resultprint/resultprint.module').then( m => m.ResultprintPageModule)
+  },
+  {
+    path: 'videosplayer/:id/:title',
+    loadChildren: () => import('./pages/studentsmain/videosplayer/videosplayer.module').then( m => m.VideosplayerPageModule)
   }
                                                                                                                                                                                                                                                          
 ];

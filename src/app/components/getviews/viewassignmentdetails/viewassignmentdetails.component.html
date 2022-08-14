@@ -1,0 +1,87 @@
+
+  <div *ngIf="this.connectionstatuscode==0" id="loader">
+    <span *ngIf="this.label != ''"> <b>  &nbsp; &nbsp;<ion-text style="font-size: 16px;"> {{this.label}} </ion-text></b></span>
+   
+        
+    <div class="w3-center">
+      <br /><br /><br />
+      <ion-spinner color="primary" style="zoom:2"></ion-spinner>
+    </div>
+   
+
+   </div>
+ 
+   
+    <div *ngIf="this.connectionstatuscode==1"  style="margin-bottom: 10px; margin-top: 10px" id="news">
+        
+     <div>
+
+         <div class="w3-class w3-card w3-white w3-round w3-container">
+
+           <p [innerHTML]="this.featurepost[0]['post']">
+
+           </p>
+
+         </div>
+
+        
+
+     </div>
+
+
+    </div>
+
+
+    <div *ngIf="this.connectionstatuscode==2">
+
+      <div class="w3-container myfont1">
+               <div class="w3-col l12 s12 m12 w3-card-0 w3-border w3-center  w3-white w3-margin-top w3-margin-bottom w3-round-xlarge" style="height:350px">
+  
+       
+       <br /> <br /> <br />
+  
+       <h3 class="myfont1"> No Record Found </h3>
+  
+       <br /><br />
+   
+       <p class="myfont1"> No Data was return from the query. <br /><br />  </p>
+  
+  
+       <p class="w3-hide"> <br /><a class="w3-btn w3-round-large w3-primary" style="width:80px"> Home </a> </p>
+   
+      
+               </div>
+      </div>
+    </div>
+
+  <div *ngIf="this.connectionstatuscode==3">
+    <div class="w3-col l12 s12 m12 w3-card-0 w3-border w3-center w3-white w3-margin-top w3-margin-bottom w3-round-xlarge" style="height:350px">
+
+    
+     <br /><br />
+
+     <h3 class="myfont1"> No Network Connection </h3>
+ 
+     <p class="myfont1"> Connect to the Internet and try again Later <br /><br /> </p>
+
+     <p> <br /><a (click)="loadpost()" class="w3-btn w3-round-large w3-primary" style="width:80px"> Retry </a> </p>
+ 
+    
+    </div>
+  </div>
+
+  <div class="w3-col l12 s12 m12" *ngIf="this.connectionstatuscode==1">
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" id="myinfinitescroll">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+
+ 
+ 
+ 
+ 
+ 
