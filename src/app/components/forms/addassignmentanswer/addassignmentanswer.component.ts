@@ -14,6 +14,7 @@ export class AddassignmentanswerComponent implements OnInit {
   
   post:any;
   assignmentfile:any;
+  content:any;
 
   @Input() userid: string = '';
   @Input() apikey: string = '';
@@ -44,33 +45,8 @@ export class AddassignmentanswerComponent implements OnInit {
    }
 
    ngAfterViewInit() {
-    tinymce.init({
-      selector: '#notecontent',
-      height: 300,
-      plugins : [
-        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-        "searchreplace wordcount visualblocks visualchars code fullscreen",
-        "insertdatetime media nonbreaking save table contextmenu directionality",
-        "emoticons template paste textcolor colorpicker textpattern"
-      ],
-      toolbar : 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
-      image_advtab : true,
-      setup: (editor) => {
-        this.editor = editor;
-        editor.on("keyup change", () => {
-          const content = editor.getContent();
-        });
-      },
-      images_upload_url: 'https://mystudyappapi.profeworld.com/mainapi/adminlogic/picuploadnoteinline.ashx', //images_upload_url: 'https://mystudyappapi.profeworld.com/mainapi/adminlogic/picuploadpostinline.ashx',
-      /*images_upload_handler: function (blobInfo, success, failure) {
-        var reader = new FileReader();
-        reader.readAsDataURL(blobInfo.blob());
-        reader.onload = function () {
-            success(<string>this.result);
-        }}*/
-    });
 
-  }
+   }
 
   ngOnDestroy() {
     tinymce.remove(this.editor);
@@ -95,7 +71,7 @@ export class AddassignmentanswerComponent implements OnInit {
       }
     }
     
-    //alert(fileList.length)
+    //alert(myFileType)
 
     if(event.target.files && event.target.files[0]){
       let reader = new FileReader();
@@ -126,7 +102,7 @@ export class AddassignmentanswerComponent implements OnInit {
 
   async proceed(){
   
-     this.formData.append("post",tinymce.get('notecontent').getContent())
+     this.formData.append("post",this.content)
      this.formData.append("userid",this.generalservice.userid+'')
      this.formData.append("assignmentid",this.postid + '')
 

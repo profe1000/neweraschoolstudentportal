@@ -48,7 +48,7 @@ export class AssignmentviewerPage implements OnInit {
  }
 
  loadmeta(){
-  this.quiztitle= this.activatedRoute.snapshot.paramMap.get('title') +"";
+   this.quiztitle= this.activatedRoute.snapshot.paramMap.get('title') +"";
    this.quizid= this.activatedRoute.snapshot.paramMap.get('id') +"";
    this.postid=this.activatedRoute.snapshot.paramMap.get('id') +""
  }

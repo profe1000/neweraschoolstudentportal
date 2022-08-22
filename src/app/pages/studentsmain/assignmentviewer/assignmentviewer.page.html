@@ -11,11 +11,17 @@
 
     <div class="w3-col l12 s12 m12" style="padding:5px" *ngIf="this.generalservice.userData">
 
-       <h2 class="w3-bottom-bar w3-border-blue"> Assignment Result for :  {{this.quiztitle}} </h2>
+       <h2 class="w3-bottom-bar w3-border-blue"> Title:  {{this.quiztitle}} </h2>
 
        <app-viewassignmentdetails *ngIf="postid > 0"  [postid]="postid" [qstring]="qstring"  [userid]="userid" [qstring]="qstring" [qstringb]="qstringb" [qstringc]="qstringc" [qstringd]="qstringd"  [updatetype]="this.updatetype">
 
       </app-viewassignmentdetails>
+
+      <h3> Add your answers here. </h3>
+      
+      <app-addassignmentanswer>
+
+      </app-addassignmentanswer>
 
     </div>
 
