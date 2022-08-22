@@ -16,12 +16,18 @@
         
      <div>
 
-         <div class="w3-class w3-card w3-white w3-round w3-container">
+         <div class="w3-class w3-card-0 w3-white w3-round w3-container">
 
 
            <p [innerHTML]="this.featurepost[0]['post']">
 
            </p>
+
+           
+           <p *ngIf="this.featurepost[0]['notefile'] != ''">
+            <a target="_blank" href="{{this.featurepost[0]['notefile']}}" class="w3-btn w3-round w3-white w3-text-pink w3-border w3-border-pink"> Download Attachment </a>
+         </p>
+
 
          </div>
 
