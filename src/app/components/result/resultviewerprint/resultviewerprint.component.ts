@@ -1,33 +1,21 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  SimpleChange,
-  ViewChild,
-} from "@angular/core";
-import { NavigationExtras, Router } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
-import {
-  LoadingController,
-  AlertController,
-  NavController,
-  MenuController,
-  IonInfiniteScroll,
-} from "@ionic/angular";
-import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
-import { ToastController } from "@ionic/angular";
-import { async } from "@angular/core/testing";
-import { GeneralserviceService } from "src/app/services/general/generalservice.service";
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChange, ViewChild } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { LoadingController, AlertController, NavController, MenuController, IonInfiniteScroll } from '@ionic/angular';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ToastController } from '@ionic/angular';
+import { async } from '@angular/core/testing';
+import { GeneralserviceService } from 'src/app/services/general/generalservice.service';
 
-import { Plugins } from "@capacitor/core";
+import { Plugins } from '@capacitor/core';
 const { Storage } = Plugins;
 
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import htmlToPdfmake from "html-to-pdfmake";
+import { environment } from "src/environments/environment";
+
 
 @Component({
   selector: "app-resultviewerprint",
@@ -35,6 +23,12 @@ import htmlToPdfmake from "html-to-pdfmake";
   styleUrls: ["./resultviewerprint.component.scss"],
 })
 export class ResultviewerprintComponent implements OnInit {
+  schoolName = environment.schoolName;
+  schoolAddress = environment.schoolAddress;
+  logourl = environment.remoteLogoUrl;
+  sampleSignature = environment.sampleSignature;
+
+  
   pdfMode = false;
   teachercomment: any;
   principalcomment: any;
@@ -666,3 +660,4 @@ export class ResultviewerprintComponent implements OnInit {
     pdfMake.createPdf(documentDefinition).open();
   }
 }
+ 

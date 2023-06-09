@@ -1,9 +1,19 @@
+
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+ apiUrl: "https://api.foursquareschoolswarri.com/",
+  remoteLogoUrl:
+    "https://api.foursquareschoolswarri.com/files/sitefiles/foursquareLogo.png",
+  sampleSignature:
+    "https://api.foursquareschoolswarri.com/files/signatureimage/signature.png",
+  localLogoUrl: "assets/images/neweralogo.jpg",
+  schoolName: "FOURSQUARE ACADEMY, WARRI",
+  schoolAddress: "6 Ekurede Itsekiri Road, Warri.",
+  paystackUrl: "",
 };
 
 /*

@@ -28,6 +28,7 @@ import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import htmlToPdfmake from "html-to-pdfmake";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-resultviewer",
@@ -35,6 +36,11 @@ import htmlToPdfmake from "html-to-pdfmake";
   styleUrls: ["./resultviewer.component.scss"],
 })
 export class ResultviewerComponent implements OnInit {
+  schoolName = environment.schoolName;
+  schoolAddress= environment.schoolAddress;
+  logourl = environment.remoteLogoUrl;
+  sampleSignature = environment.sampleSignature;
+
   pdfMode = false;
   teachercomment: any;
   principalcomment: any;
