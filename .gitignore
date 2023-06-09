@@ -49,6 +49,7 @@ node_modules/
 www/
 .wwww
 www*
+wwww
 
 # Optional npm cache directory
 .npm
