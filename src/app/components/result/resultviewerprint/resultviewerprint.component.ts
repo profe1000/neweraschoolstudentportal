@@ -1,21 +1,34 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChange, ViewChild } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { LoadingController, AlertController, NavController, MenuController, IonInfiniteScroll } from '@ionic/angular';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ToastController } from '@ionic/angular';
-import { async } from '@angular/core/testing';
-import { GeneralserviceService } from 'src/app/services/general/generalservice.service';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChange,
+  ViewChild,
+} from "@angular/core";
+import { NavigationExtras, Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import {
+  LoadingController,
+  AlertController,
+  NavController,
+  MenuController,
+  IonInfiniteScroll,
+} from "@ionic/angular";
+import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
+import { ToastController } from "@ionic/angular";
+import { async } from "@angular/core/testing";
+import { GeneralserviceService } from "src/app/services/general/generalservice.service";
 
-import { Plugins } from '@capacitor/core';
+import { Plugins } from "@capacitor/core";
 const { Storage } = Plugins;
 
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import htmlToPdfmake from "html-to-pdfmake";
-import { environment } from "src/environments/environment";
-
+import { environment, resultTypeDBId } from "src/environments/environment";
 
 @Component({
   selector: "app-resultviewerprint",
@@ -28,7 +41,6 @@ export class ResultviewerprintComponent implements OnInit {
   logourl = environment.remoteLogoUrl;
   sampleSignature = environment.sampleSignature;
 
-  
   pdfMode = false;
   teachercomment: any;
   principalcomment: any;
@@ -47,8 +59,8 @@ export class ResultviewerprintComponent implements OnInit {
   numberoffail: any;
   numberofpass: any;
 
-  distictionleast = 60;
-  passleast = 50;
+  distictionleast = 75;
+  passleast = 40;
   failleast = 0;
 
   @Input() apihost: string = "";
@@ -92,6 +104,13 @@ export class ResultviewerprintComponent implements OnInit {
   @Input() shownoconnection: Boolean = true;
   startproceessing: Boolean = false;
   processingmsg: any;
+
+  behaviourRatingKeys = [
+    { key: 1, value: "Show minimal regard for observable trait" },
+    { key: 2, value: "Acceptable level of observable trait" },
+    { key: 3, value: "Maintains a high level of observable trait" },
+    { key: 4, value: "Maintains an excellent degree of observable trait" },
+  ];
 
   constructor(
     public generalservice: GeneralserviceService,
@@ -223,6 +242,27 @@ export class ResultviewerprintComponent implements OnInit {
     this.numberofdistintion = 0;
     this.numberofpass = 0;
     this.numberoffail = 0;
+
+    if (
+      this.resultdata.postgrades[0].resulttypeid ===
+        resultTypeDBId.nurseryResult ||
+      this.resultdata.postgrades[0].resulttypeid === resultTypeDBId.basicResult
+    ) {
+      this.distictionleast = 80;
+      this.passleast = 49;
+    } else if (
+      this.resultdata.postgrades[0].resulttypeid ===
+      resultTypeDBId.juniorSecResult
+    ) {
+      this.distictionleast = 80;
+      this.passleast = 45;
+    } else if (
+      this.resultdata.postgrades[0].resulttypeid ===
+      resultTypeDBId.seniorSecondaryResult
+    ) {
+      this.distictionleast = 75;
+      this.passleast = 40;
+    }
 
     for (var i = 0; i < this.resultdata.post.length; i++) {
       if (
@@ -660,4 +700,3 @@ export class ResultviewerprintComponent implements OnInit {
     pdfMake.createPdf(documentDefinition).open();
   }
 }
- 

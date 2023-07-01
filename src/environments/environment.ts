@@ -3,17 +3,25 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+export enum resultTypeDBId {
+  nurseryResult = 1,
+  basicResult = 2,
+  juniorSecResult = 3,
+  seniorSecondaryResult = 4,
+}
+
 export const environment = {
   production: false,
- apiUrl: "https://api.foursquareschoolswarri.com/",
+  apiUrl: "https://profesmsnewera.profeworld.com/",
   remoteLogoUrl:
-    "https://api.foursquareschoolswarri.com/files/sitefiles/foursquareLogo.png",
-  sampleSignature:
-    "https://api.foursquareschoolswarri.com/files/signatureimage/signature.png",
+    "https://profesmsnewera.profeworld.com/files/sitefiles/neweralogo.jpg",
+    sampleSignature:
+    "https://profesmsnewera.profeworld.com/files/signatureimage/signature.png",
   localLogoUrl: "assets/images/neweralogo.jpg",
-  schoolName: "FOURSQUARE ACADEMY, WARRI",
-  schoolAddress: "6 Ekurede Itsekiri Road, Warri.",
+  schoolName: "New Era Model School",
+  schoolAddress: "97 Jakpa Road Effurun, Delta State",
   paystackUrl: "",
+  resultTypeIdDB: resultTypeDBId,
 };
 
 /*

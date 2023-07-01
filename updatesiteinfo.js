@@ -1,5 +1,5 @@
 const fs = require("fs");
-const sitepath = "./samples_var/foursquareschool/";
+const sitepath = "./samples_var/newera/";
 
 // Replace Prod Environment
 fs.copyFile(

@@ -19,8 +19,8 @@ export class ResulteditorComponent implements OnInit {
 
   teachercomment:any;
   principalcomment:any;
-  teachername:any;
-  principalname:any;
+  teacherid:any;
+  principalid:any;
   promotionalstatement:any;
   attendance:any=0;
   schoolopened:any=0;
@@ -147,10 +147,11 @@ export class ResulteditorComponent implements OnInit {
     this.nexttermresume= this.generalservice.formatDate(this.resultdata.post[0].nexttermresume);
     this.publishedstatus=this.resultdata.post[0].publishedstatus;
 
-    this.teachername = this.resultdata.post[0].teachername;
-    this.principalname=this.resultdata.post[0].principalname;
+    this.teacherid = this.resultdata.post[0].teacherid1;
+    this.principalid=this.resultdata.post[0].principalid;
     this.house=this.resultdata.post[0].studenthouse;
     this.Studentuniquereg=this.resultdata.post[0].studentspecialreg;
+
 
     }
  
@@ -344,6 +345,18 @@ export class ResulteditorComponent implements OnInit {
   }
 
 
+  //Get staff Name
+  getourselectdvalueprincipal($event){
+    this.principalid = $event;
+    this.updateresultmeta(1);
+  }
+
+  getourselectdvalueteacher($event){
+    this.teacherid= $event;
+    this.updateresultmeta(1);
+  }
+
+
   // Update Score Sheet
 
   updatedeletestatus($event,index){
@@ -483,7 +496,7 @@ async updatescore(index){
    "deletestatus":this.resultdata.post[index].deletestatus,
    "ca":this.resultdata.post[index].ca,
    "ca2":this.resultdata.post[index].ca2,
-   "ca3":this.resultdata.post[index].ca3,
+   "ca3":0,
    "ca4":0,
    "exam":this.resultdata.post[index].exam,
    "gradeid":this.resultdata.post[index].gradeid,
@@ -590,8 +603,8 @@ async updatesbehaviour(index){
     "ptafees" : this.ptafees,
     "publishedstatus" : this.publishedstatus,
     "nexttermresume": this.nexttermresume,
-    "teachername" : this.teachername,
-    "principalname" : this.principalname,
+    "teacherid" : this.teacherid,
+    "principalid" : this.principalid,
     "studenthouse" : this.house,
     "studentspecialreg": this.Studentuniquereg,
     "adminid":this.generalservice.userid,

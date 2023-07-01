@@ -107,14 +107,13 @@
        <br /><span class="w3-margin-top myfont1 w3-small"> Principal Comment </span> 
        <ion-input (ionChange)="updateresultmeta(1)"   [(ngModel)]="this.principalcomment"   class="w3-input w3-round w3-border-dark-grey w3-text-black w3-border w3-small" placeholder="Principal Comment" style="height:50px" required></ion-input>
           
+       <div class="w3-col l12 m12 s12 w3-margin-top">
+        <app-selectservercomp headername="Teacher" titlename="stafffname" valuename="staffid" [selvalue]="this.teacherid"  [apiurl]="this.generalservice.apiurl + this.generalservice.vieteacherapi"   (getselectdvalue)="getourselectdvalueteacher($event)"></app-selectservercomp>
+       </div>
 
-       <br /><span class="w3-margin-top myfont1 w3-small"> Teacher Name </span> 
-       <ion-input (ionChange)="updateresultmeta(1)" [(ngModel)]="this.teachername"    class="w3-input w3-round w3-border-dark-grey w3-text-black w3-border w3-small" placeholder="Teacher Name" style="height:50px" required></ion-input>
-    
-       <br /><span class="w3-margin-top myfont1 w3-small"> Principal Name</span> 
-       <ion-input (ionChange)="updateresultmeta(1)" [(ngModel)]="this.principalname"    class="w3-input w3-round w3-border-dark-grey w3-text-black w3-border w3-small" placeholder="Teacher Name" style="height:50px" required></ion-input>
-   
-
+       <div class="w3-col l12 m12 s12 w3-margin-top">
+        <app-selectservercomp headername="Principal" titlename="stafffname" valuename="staffid" [selvalue]="this.principalid "  [apiurl]="this.generalservice.apiurl + this.generalservice.vieteacherapi"   (getselectdvalue)="getourselectdvalueprincipal($event)"></app-selectservercomp>
+       </div>
 
        <h2> Attendance Records</h2>
 
