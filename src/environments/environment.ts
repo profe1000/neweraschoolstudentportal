@@ -12,11 +12,11 @@ export enum resultTypeDBId {
 
 export const environment = {
   production: false,
-  apiUrl: "https://profesmsnewera.profeworld.com/",
+  apiUrl: "https://student.neweramodelschools.com/",
   remoteLogoUrl:
-    "https://profesmsnewera.profeworld.com/files/sitefiles/neweralogo.jpg",
+    "https://student.neweramodelschools.com/files/sitefiles/neweralogo.jpg",
     sampleSignature:
-    "https://profesmsnewera.profeworld.com/files/signatureimage/signature.png",
+    "https://student.neweramodelschools.com/files/signatureimage/signature.png",
   localLogoUrl: "assets/images/neweralogo.jpg",
   schoolName: "New Era Model School",
   schoolAddress: "97 Jakpa Road Effurun, Delta State",
